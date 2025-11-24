@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YUMYUM</title>
+  </head>
+
+  <body class="bg-[#00C04B] min-h-screen w-full flex py-12 px-20">
+    <main class="bg-[#0EB24E] flex-1 rounded-xl flex flex-col">
+      <p class="text-right px-6 py-2 cursor-pointer font-bold text-3xl">
+        <a href="/ingredient.html">X</a>
+      </p>
+
+      <hr class="h-0.5 border-none bg-white mx-6 mt-2" />
+
+      <div class="p-6 text-white flex gap-14 flex-1">
+        <!-- LEFT SIDE IMAGE AREA -->
+        <div class="flex-1 max-w-[440px]">
+          <div
+            class="js-ingredient-image h-full w-full rounded-xl overflow-hidden"
+          ></div>
+        </div>
+
+        <!-- RIGHT SIDE CONTENT -->
+        <div class="flex flex-col flex-1">
+          <div class="js-ingredient-info"></div>
+
+          <!-- Food Related -->
+          <h2 class="text-2xl font-bold mt-5 mb-3">
+            Food Related Recommendation
+          </h2>
+
+          <div
+            class="js-ingredient-related-info grid grid-cols-4 gap-4 mt-1"
+          ></div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="/scripts/ingredient-detail-page.js"></script>
+  </body>
+</html>
