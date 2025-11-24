@@ -2,21 +2,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
 @font-face {
   font-family: "aalto";
-  src: url("../assets/fonts/aalto/aalto-display-personal-use.otf") format("opentype");
+  src: url("../assets/fonts/aalto/aalto-display-personal-use.otf")
+    format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Paranoid Starting";
-  src: url("../assets/fonts/paranoid_starting/Paranoid Starting Demo.otf") format("opentype");
+  src: url("../assets/fonts/paranoid_starting/Paranoid Starting Demo.otf")
+    format("opentype");
   font-weight: normal;
   font-style: normal;
 }
-.active{
+.active {
   position: relative;
 }
-.active::after{
+.active::after {
   content: "";
   width: 7px;
   height: 7px;
@@ -26,5 +28,8 @@
   bottom: -20%;
   left: 50%;
   transform: translateX(-50%);
-  
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
