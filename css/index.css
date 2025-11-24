@@ -13,3 +13,18 @@
   font-weight: normal;
   font-style: normal;
 }
+.active{
+  position: relative;
+}
+.active::after{
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 1000px;
+  background-color: white;
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
