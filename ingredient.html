@@ -31,21 +31,33 @@
           id="navMenu"
           class="hidden flex-col space-y-2 font-bold absolute top-14 left-0 w-full lg:w-auto md:pl-16 bg-[#00C04B] p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none"
         >
-          <li class="text-[18px] cursor-pointer">Home</li>
-          <li class="text-[18px] cursor-pointer">Cooking</li>
+          <li class="text-[18px] cursor-pointer">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="text-[18px] cursor-pointer">
+            <a href="cooking.html"> Cooking </a>
+          </li>
           <li
-            class="flex lg:justify-center items-center gap-2 text-[18px] cursor-pointer"
+            class="flex lg:justify-center items-center gap-2 text-[18px] cursor-pointer active"
           >
-            <p>Ingredients</p>
-            <svg width="18" height="18" viewBox="0 0 22 22" fill="none">
-              <path
-                d="M5.5 8.25L11 13.75L16.5 8.25"
-                stroke="white"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <a href="#" class="flex items-center">
+              Ingredients
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5 8.25L11 13.75L16.5 8.25"
+                  stroke="white"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
           </li>
           <li class="text-[18px] cursor-pointer">Blog</li>
         </ul>
@@ -87,47 +99,52 @@
 
             <!-- =========== Filter Categories =========== -->
             <div class="bg-[#0EB24E] w-full mt-4 sm:w-[75%] rounded-2xl">
-              <h3 class="text-[18px] sm:text-[20px] font-bold p-4">
-                Categories
-              </h3>
+              <h3 class="text-[18px] sm:text-[20px] font-bold p-4">Sort By</h3>
 
               <!-- =========== Filter Items =========== -->
               <div class="flex flex-col gap-3 pb-4 px-2 sm:px-4">
                 <div class="flex gap-5 items-center">
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="sortOption"
+                    value="relevant"
+                    checked
                     class="w-5 h-5 accent-white border-2 border-white rounded-sm cursor-pointer"
                   />
-                  <p class="font-semibold">Meat</p>
+                  <p class="font-semibold">Relevant</p>
                 </div>
 
                 <div class="flex gap-5 items-center">
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="sortOption"
+                    value="a-to-z"
                     class="w-5 h-5 accent-white border-2 border-white rounded-sm cursor-pointer"
                   />
-                  <p class="font-semibold">Vegetables</p>
+                  <p class="font-semibold">A to Z</p>
                 </div>
 
                 <div class="flex gap-5 items-center">
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="sortOption"
+                    value="z-to-a"
                     class="w-5 h-5 accent-white border-2 border-white rounded-sm cursor-pointer"
                   />
-                  <p class="font-semibold">Fruits</p>
+                  <p class="font-semibold">Z to A</p>
                 </div>
               </div>
             </div>
 
             <button
-              class="bg-black text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-4 cursor-pointer"
+              class="bg-[#0EB24E] text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-4 cursor-pointer"
               type="submit"
             >
               Apply Filters
             </button>
 
             <button
-              class="bg-[#0EB24E] text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-2 cursor-pointer"
+              class="bg-black text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-2 cursor-pointer"
               type="submit"
             >
               Clear Filters

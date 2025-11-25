@@ -31,9 +31,9 @@ export async function renderIngredientInfo(data) {
   nutrients.forEach((n) => {
     if (n.value !== null) {
       nutrientHTML += `
-        <div class="bg-[#03411b21] py-3 px-7 flex flex-col items-center rounded-xl">
+        <div class="bg-[#03411b21] p-3 sm:px-6 flex flex-col items-center rounded-xl">
           <p class="font-bold text-[20px]">${n.value}${n.suffix}</p>
-          <p class="font-semibold text-[14px]">${n.label}</p>
+          <p class="font-semibold lg:text-[12px] text-[14px]">${n.label}</p>
         </div>
       `;
     }
@@ -69,31 +69,24 @@ export async function renderIngredientInfo(data) {
   document.querySelector(".js-ingredient-info").innerHTML = html;
 }
 
-export async function renderIngredientRelatedInfo(ingredientName) {
-  const response = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/search.php?s=${ingredientName}`
-  );
-
-  const result = await response.json();
-
-  const data = result["meals"];
-
+export function renderIngredientRelatedInfo(data) {
   let html = "";
 
-  if (data) {
+  if (data && data.length > 0) {
     data.slice(0, 4).forEach((item) => {
       html += `
         <div class="flex flex-col items-center gap-2">
           <img
             src="${item.strMealThumb}"
             alt="${item.strMeal}"
-            class="w-[90%] rounded-3xl"
+            loading="lazy"
+            class="md:w-[75%] xl:w-[80%] rounded-3xl"
           />
   
-          <p class="font-semibold text-xl">${item.strMeal}</p>
+          <p class="font-semibold lg:text-md xl:text-lg 2xl:text-xl truncate w-full text-center">${item.strMeal}</p>
   
           <button
-            class="see-meal-btn bg-black text-white p-2 text-[1rem] font-semibold rounded-md w-[50%] cursor-pointer"
+            class="see-meal-btn bg-black text-white py-2 px-3 text-sm xl:text-[1rem] font-semibold rounded-md 2xl:w-[50%] cursor-pointer"
             data-mealid="${item.idMeal}"
           >
             See more
@@ -103,8 +96,8 @@ export async function renderIngredientRelatedInfo(ingredientName) {
     });
   } else {
     html = `
-      <div class="text-center"> 
-        No Related Food Founded!
+      <div class="col-span-full xl:col-span-2 mx-auto flex justify-center items-center h-20 px-4 text-center bg-white/10 rounded-xl text-lg font-semibold text-white">
+        No related food found!
       </div>
     `;
   }

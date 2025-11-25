@@ -32,11 +32,11 @@ export async function renderIngredientCard(list = null) {
       <p class="text-[20px] xl:text-[24px] font-bold truncate w-full text-center">${item.strIngredient}</p>
 
       <button
-        class="see-more-btn bg-black text-white p-2 text-[14px] xl:text-[1rem] font-semibold rounded-md xl:w-[50%] cursor-pointer"
+        class="see-more-btn bg-black text-white w-[90%] p-2 text-[14px] lg:text-[1rem] font-semibold rounded-md 2xl:w-[70%] cursor-pointer"
         data-ingredient="${item.strIngredient}"
         data-ingredientImage="${item.strThumb}"
       >
-        See more
+        See more 
       </button>
       </div>
     `;
