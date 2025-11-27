@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script
+      src="https://kit.fontawesome.com/887532cb5c.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YUMYUM</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body
+    class="bg-[#00C04B] text-white w-screen font-['Geist'] overflow-x-hidden min-h-screen"
+  >
+    <header class="px-4 sm:px-8 md:px-16">
+      <!-- ============== Navbar ============== -->
+      <nav class="py-4 flex justify-between items-center gap-4">
+        <!-- Hamburger Menu (Mobile Screen) -->
+        <button
+          id="hamburgerBtn"
+          class="lg:hidden text-white text-3xl focus:outline-none"
+        >
+          <i id="hamburgerIcon" class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Left Menu -->
+        <ul
+          id="navMenu"
+          class="hidden flex-col space-y-2 font-bold absolute top-14 left-0 w-full lg:w-auto md:pl-16 bg-[#00C04B] p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none"
+        >
+          <li class="text-[18px] cursor-pointer">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="text-[18px] cursor-pointer">
+            <a href="cooking.html"> Cooking </a>
+          </li>
+          <li
+            class="flex lg:justify-center items-center gap-2 text-[18px] cursor-pointer active"
+          >
+            <a href="#" class="flex items-center">
+              Ingredients
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5 8.25L11 13.75L16.5 8.25"
+                  stroke="white"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </li>
+          <li class="text-[18px] cursor-pointer">Blog</li>
+        </ul>
+
+        <!-- Logo -->
+        <p
+          class="font-['Paranoid_Starting'] text-xl sm:text-2xl pl-11 sm:p-0 sm:text-center cursor-pointer"
+        >
+          YuMYuM
+        </p>
+
+        <!-- Search -->
+        <div class="flex justify-end">
+          <div
+            class="flex items-center border-2 border-white rounded-full px-4 sm:w-full w-[80%] bg-white"
+          >
+            <i
+              class="fa-solid fa-magnifying-glass text-black cursor-pointer w-5"
+            ></i>
+            <input
+              class="p-2 outline-none text-black placeholder-black text-[0.9rem] flex-1"
+              type="text"
+              name="search-item"
+              id="search-item"
+              placeholder="Search any meal..."
+              oninput="searchIngredient(event)"
+            />
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="px-4 sm:px-8 md:px-16 mt-6">
+      <div class="flex flex-col lg:flex-row gap-6">
+        <!-- ============ Filter Section ============ -->
+        <section class="w-full lg:w-[25%]">
+          <form id="filterSelectionForm" action="#" method="post">
+            <h2 class="text-[20px] sm:text-[24px] font-bold">Filters</h2>
+
+            <!-- =========== Filter Categories =========== -->
+            <div class="bg-[#0EB24E] w-full mt-4 sm:w-[75%] rounded-2xl">
+              <h3 class="text-[18px] sm:text-[20px] font-bold p-4">Sort By</h3>
+
+              <!-- =========== Filter Items =========== -->
+              <div class="flex flex-col gap-3 pb-4 px-2 sm:px-4">
+                <div class="flex gap-5 items-center">
+                  <input
+                    type="radio"
+                    name="sortOption"
+                    value="relevant"
+                    checked
+                    class="w-5 h-5 accent-white border-2 border-white rounded-sm cursor-pointer"
+                  />
+                  <p class="font-semibold">Relevant</p>
+                </div>
+
+                <div class="flex gap-5 items-center">
+                  <input
+                    type="radio"
+                    name="sortOption"
+                    value="a-to-z"
+                    class="w-5 h-5 accent-white border-2 border-white rounded-sm cursor-pointer"
+                  />
+                  <p class="font-semibold">A to Z</p>
+                </div>
+
+                <div class="flex gap-5 items-center">
+                  <input
+                    type="radio"
+                    name="sortOption"
+                    value="z-to-a"
+                    class="w-5 h-5 accent-white border-2 border-white rounded-sm cursor-pointer"
+                  />
+                  <p class="font-semibold">Z to A</p>
+                </div>
+              </div>
+            </div>
+
+            <button
+              class="bg-[#0EB24E] text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-4 cursor-pointer"
+              type="submit"
+            >
+              Apply Filters
+            </button>
+
+            <button
+              class="bg-black text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-2 cursor-pointer"
+              type="submit"
+            >
+              Clear Filters
+            </button>
+          </form>
+        </section>
+
+        <!-- ========== Render Ingredient =========== -->
+        <section class="flex-1">
+          <h1 class="text-[28px] sm:text-[32px] font-bold my-4">
+            Discover More About Ingredient
+          </h1>
+
+          <!-- ============ Ingredient Card ============ -->
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-6 gap-16 js-card-item mb-10"
+          >
+            <!-- ======== Card Item ========= -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="scripts/ingredient-list-page.js"></script>
+    <script>
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const hamburgerIcon = document.getElementById("hamburgerIcon");
+      const navMenu = document.getElementById("navMenu");
+
+      hamburgerBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("hidden");
+
+        if (navMenu.classList.contains("hidden")) {
+          hamburgerIcon.classList.remove("fa-xmark");
+          hamburgerIcon.classList.add("fa-bars");
+        } else {
+          hamburgerIcon.classList.remove("fa-bars");
+          hamburgerIcon.classList.add("fa-xmark");
+        }
+      });
+    </script>
+  </body>
+</html>
