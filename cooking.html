@@ -14,28 +14,35 @@
 
 <body class="bg-[#00C04B] text-white w-screen font-['Geist'] overflow-x-hidden h-screen relative">
     <header>
-        <nav class="p-2.5 grid grid-cols-3 grid-rows-1">
+        <nav class="relative p-5.5 grid grid-cols-2 grid-rows-1 w-[75%]">
             <ul class="flex col-start-1 gap-x-10 items-center mx-auto">
-                <li class="active">Home</li>
-                <li>Cooking</li>
-                <li class="flex items-center">Ingredients <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.5 8.25L11 13.75L16.5 8.25" stroke="white" stroke-width="4" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </li>
+                <li class="active" ><a href="index.html">Home</a></li>
+                <li><a href="cooking.html">Cooking</a></li>
+	    <li class="flex items-center">
+		<a href="ingredient.html" class="flex items-center">
+		    Ingredients
+		    <svg width="22" height="22" viewBox="0 0 22 22"
+			fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M5.5 8.25L11 13.75L16.5 8.25"
+			    stroke="white" stroke-width="4"
+			    stroke-linecap="round"
+			    stroke-linejoin="round" />
+		    </svg>
+		</a>
+	    </li>
                 <li>Blog</li>
             </ul>
 	    
             <p class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl my-auto">YuMYuM</p>
-	    <div class="col-start-3 flex items-center bg-white text-black w-[50%] p-3 rounded-lg">
-		<svg width="29" height="29" class="mr-4" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-		<path d="M25.375 25.375L20.1188 20.1188M22.9583 13.2917C22.9583 18.6304 18.6304 22.9583 13.2917 22.9583C7.95291 22.9583 3.625 18.6304 3.625 13.2917C3.625 7.95291 7.95291 3.625 13.2917 3.625C18.6304 3.625 22.9583 7.95291 22.9583 13.2917Z" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-		</svg>
-	    <input type="text" class="focus:outline-none" placeholder="Search">
+	    <div  class="absolute left-[100%] z-100 top-[13%] flex flex-col bg-white text-black w-100  py-3 rounded-full" id="container">
+		    <div class="relative flex items-center ml-4" >
+			<svg width="29" height="29" class="mr-4" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" >
+			<path d="M25.375 25.375L20.1188 20.1188M22.9583 13.2917C22.9583 18.6304 18.6304 22.9583 13.2917 22.9583C7.95291 22.9583 3.625 18.6304 3.625 13.2917C3.625 7.95291 7.95291 3.625 13.2917 3.625C18.6304 3.625 22.9583 7.95291 22.9583 13.2917Z" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+			<input id="search-input" type="text" class="focus:outline-none " placeholder="Search">
+		    </div>
 
 	    </div>
-            <div class="col-start-3">&nbsp;</div>
         </nav>
     </header>
     <main>
@@ -43,12 +50,12 @@
 		    <div class="flex flex-col justify-between">
 			    <div>
 				    <p class="   font-['aalto']  text-9xl ">MOST COOK OF THE WEEK</p>
-				    <p class="font-['aalto'] text-3xl opacity-70 -mt-4">CHA SPEI</p>
+				    <p id="foodName" class="font-['aalto'] text-3xl opacity-70 -mt-4"></p>
 
 			    </div>
 			    <div>
 			    <button class="px-3 py-4 text-black bg-white rounded-lg flex cursor-pointer items-center" >
-			        <span class="mr-2 font-semibold font-['Geist'] text-xl">Cook this</span>
+			        <span class="mr-2 font-semibold font-['Geist'] text-xl" id="btn">Cook this</span>
 				<svg width="30" height="30" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M15.3667 15.8538C16.1181 14.7993 16.0342 13.6886 15.5132 11.6908C14.4829 7.73973 14.8931 5.57411 18.4452 3.01019L20.179 1.75879L20.5983 3.85544C21.0439 6.08366 21.7758 7.46182 23.6549 10.1127C23.7296 10.218 23.7296 10.218 23.8046 10.3238C26.5113 14.1425 27.5 16.4446 27.5 20.6251C27.5 25.6966 22.3731 30.2501 16.5 30.2501C10.6266 30.2501 5.49999 25.6972 5.49999 20.6251C5.49999 20.5303 5.50009 20.5332 5.48402 20.1142C5.35978 16.8738 5.95898 14.3377 8.38346 11.5994C8.89571 11.0208 9.47798 10.4648 10.1332 9.93269L11.5797 8.7581L12.2755 10.4866C12.7897 11.7639 13.3921 12.7679 14.0726 13.5047C14.6489 14.1287 15.0765 14.9134 15.3667 15.8538ZM10.4424 13.4224C8.57603 15.5304 8.1323 17.4084 8.232 20.0089C8.25057 20.493 8.24999 20.4759 8.24999 20.6251C8.24999 24.1009 12.0774 27.5001 16.5 27.5001C20.9222 27.5001 24.75 24.1004 24.75 20.6251C24.75 17.1301 23.9686 15.3108 21.561 11.9141C21.4864 11.8088 21.4864 11.8088 21.4114 11.7031C19.9492 9.64037 19.0777 8.20553 18.5011 6.60081C17.5594 7.72921 17.6148 8.85151 18.1742 10.9969C19.2046 14.948 18.7943 17.1136 15.2422 19.6775L13.2169 21.1394L13.065 18.6462C12.968 17.0532 12.6075 15.9715 12.0524 15.3705C11.504 14.7768 11.0089 14.0817 10.5649 13.2864C10.5235 13.3316 10.4826 13.3769 10.4424 13.4224Z" fill="black"/>
 				</svg>
@@ -56,18 +63,10 @@
 
 			    </div>
 		    </div>
-		    <img src="assets/images/cooking/bowl-food.png" alt="" class="w-130">
+		    <img id="foodImg" src="" alt="" class="rounded-lg">
 
 	    </div>
-	    <div class="mt-20 flex flex-nowrap gap-5 overflow-x-scroll  ">
-		    <img src="assets/images/cooking/img1.png" class="w-1/4"    alt="">
-		    <img src="assets/images/cooking/img2.png"  class="w-1/4"  alt="">
-		    <img src="assets/images/cooking/img3.png" class="w-1/4 "   alt="">
-		    <img src="assets/images/cooking/img4.png"    class=" w-1/4 " alt="">
-		    <img src="assets/images/cooking/img1.png" class="w-1/4"    alt="">
-		    <img src="assets/images/cooking/img2.png"  class="w-1/4"  alt="">
-		    <img src="assets/images/cooking/img3.png" class="w-1/4 "   alt="">
-		    <img src="assets/images/cooking/img4.png"    class=" w-1/4 " alt="">
+	    <div class="mt-20 flex flex-nowrap gap-5 overflow-x-scroll" id="foodContainer">
 	    </div>
 
     </main>
