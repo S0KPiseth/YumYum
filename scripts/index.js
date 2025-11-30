@@ -16,7 +16,6 @@ const falafelFrames = [
 
 let falafelLoaded = [];
 
-// Preload helper
 function preloadImages(urls) {
   return Promise.all(
     urls.map(url => {
@@ -46,13 +45,11 @@ preloadImages(falafelFrames).then(images => {
 
       const percentage = Math.round((loadProgress / total) * 100);
 
-      // 4 frames → index must be 0..3
       let frame = Math.floor((percentage / 100) * falafelLoaded.length);
       if (frame >= falafelLoaded.length) frame = falafelLoaded.length - 1;
 
       loadingImage.src = falafelLoaded[frame].src;
 
-      // Hide loader when animation completes
       if (frame === falafelLoaded.length - 1) {
         loadingDiv.classList.add("hidden");
       }

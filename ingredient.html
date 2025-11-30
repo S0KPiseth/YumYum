@@ -21,7 +21,7 @@
         <!-- Hamburger Menu (Mobile Screen) -->
         <button
           id="hamburgerBtn"
-          class="lg:hidden text-white text-3xl focus:outline-none"
+          class="lg:hidden text-white text-3xl focus:outline-none cursor-pointer"
         >
           <i id="hamburgerIcon" class="fa-solid fa-bars"></i>
         </button>
@@ -31,16 +31,23 @@
           id="navMenu"
           class="hidden flex-col space-y-2 font-bold absolute top-14 left-0 w-full lg:w-auto md:pl-16 bg-[#00C04B] p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none"
         >
-          <li class="text-[18px] cursor-pointer">
+          <li
+            class="text-[18px] cursor-pointer hover:text-gray-300 transition-all duration-300"
+          >
             <a href="index.html">Home</a>
           </li>
-          <li class="text-[18px] cursor-pointer">
+          <li
+            class="text-[18px] cursor-pointer hover:text-gray-300 transition-all duration-300"
+          >
             <a href="cooking.html"> Cooking </a>
           </li>
           <li
             class="flex lg:justify-center items-center gap-2 text-[18px] cursor-pointer active"
           >
-            <a href="#" class="flex items-center">
+            <a
+              href="#"
+              class="flex items-center hover:text-gray-300 transition-all duration-300"
+            >
               Ingredients
               <svg
                 width="22"
@@ -59,7 +66,11 @@
               </svg>
             </a>
           </li>
-          <li class="text-[18px] cursor-pointer">Blog</li>
+          <li
+            class="text-[18px] cursor-pointer hover:text-gray-300 transition-all duration-300"
+          >
+            Blog
+          </li>
         </ul>
 
         <!-- Logo -->
@@ -103,48 +114,60 @@
 
               <!-- =========== Filter Items =========== -->
               <div class="flex flex-col gap-3 pb-4 px-2 sm:px-4">
-                <div class="flex gap-5 items-center">
+                <label class="flex gap-5 items-center cursor-pointer">
                   <input
                     type="radio"
                     name="sortOption"
                     value="relevant"
                     checked
-                    class="w-5 h-5 accent-white border-2 border-white rounded-sm cursor-pointer"
+                    class="w-5 h-5 accent-black rounded-sm cursor-pointer"
                   />
-                  <p class="font-semibold">Relevant</p>
-                </div>
+                  <p
+                    class="font-semibold hover:text-gray-300 transition-all duration-300"
+                  >
+                    Relevant
+                  </p>
+                </label>
 
-                <div class="flex gap-5 items-center">
+                <label class="flex gap-5 items-center">
                   <input
                     type="radio"
                     name="sortOption"
                     value="a-to-z"
-                    class="w-5 h-5 accent-white border-2 border-white rounded-sm cursor-pointer"
+                    class="w-5 h-5 accent-black rounded-sm cursor-pointer"
                   />
-                  <p class="font-semibold">A to Z</p>
-                </div>
+                  <p
+                    class="font-semibold hover:text-gray-300 transition-all duration-300"
+                  >
+                    A to Z
+                  </p>
+                </label>
 
-                <div class="flex gap-5 items-center">
+                <label class="flex gap-5 items-center">
                   <input
                     type="radio"
                     name="sortOption"
                     value="z-to-a"
-                    class="w-5 h-5 accent-white border-2 border-white rounded-sm cursor-pointer"
+                    class="w-5 h-5 accent-black rounded-sm cursor-pointer"
                   />
-                  <p class="font-semibold">Z to A</p>
-                </div>
+                  <p
+                    class="font-semibold hover:text-gray-300 transition-all duration-300"
+                  >
+                    Z to A
+                  </p>
+                </label>
               </div>
             </div>
 
             <button
-              class="bg-[#0EB24E] text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-4 cursor-pointer"
+              class="bg-[#0EB24E] text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-4 cursor-pointer hover:text-black hover:opacity-70 transition-all duration-300"
               type="submit"
             >
               Apply Filters
             </button>
 
             <button
-              class="bg-black text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-2 cursor-pointer"
+              class="bg-black text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-2 cursor-pointer hover:bg-gray-300 hover:text-black transition-all duration-300"
               type="submit"
             >
               Clear Filters
@@ -158,12 +181,15 @@
             Discover More About Ingredient
           </h1>
 
-          <!-- ============ Ingredient Card ============ -->
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-6 gap-16 js-card-item mb-10"
-          >
-            <!-- ======== Card Item ========= -->
+          <!-- ============ Wrapper ============ -->
+          <div class="relative">
+            <!-- ============ Ingredient Cards ============ -->
+            <div
+              class="js-card-item grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-6 gap-16 mb-10"
+            ></div>
           </div>
+
+          <div id="pagination" class="flex gap-6 justify-center my-10"></div>
         </section>
       </div>
     </main>
