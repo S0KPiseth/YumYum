@@ -29,7 +29,16 @@
   left: 50%;
   transform: translateX(-50%);
 }
-#navUL li{
+
+@media (max-width: 1024px) {
+  .active::after {
+    left: 0;
+    bottom: 50%;
+    transform: translate(-150%, 50%);
+  }
+}
+
+#navUL li {
   font-weight: 500;
 }
 

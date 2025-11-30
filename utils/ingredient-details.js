@@ -1,4 +1,14 @@
-import { playLoading } from "../scripts/index.js";
+const playLoading = () => {
+  let i = 1;
+  const intervalID = setInterval(() => {
+    if (i > 4) {
+      i = 1;
+    }
+    loadingImage.src = `assets/images/loading/falafel${i}.webp`;
+    i++;
+  }, 500);
+  return intervalID;
+};
 
 export async function renderIngredientInfo(data) {
   const loader = document.querySelector(".ingredient-loader");
@@ -112,3 +122,13 @@ export function renderIngredientRelatedInfo(data) {
 
   document.querySelector(".js-ingredient-related-info").innerHTML = html;
 }
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("see-meal-btn")) {
+    const mealID = e.target.dataset.mealid;
+
+    localStorage.setItem("foodId", mealID);
+
+    window.location.href = "detail-cooking.html";
+  }
+});

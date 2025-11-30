@@ -15,13 +15,15 @@
   <body
     class="bg-[#00C04B] text-white w-screen font-['Geist'] overflow-x-hidden min-h-screen"
   >
-    <header class="px-4 sm:px-8 md:px-16">
+    <header class="text-black md:w-[98vw] px-2 mx-auto pt-2">
       <!-- ============== Navbar ============== -->
-      <nav class="py-4 flex justify-between items-center gap-4">
+      <nav
+        class="p-2.5 bg-white flex justify-between items-center gap-4 rounded-2xl"
+      >
         <!-- Hamburger Menu (Mobile Screen) -->
         <button
           id="hamburgerBtn"
-          class="lg:hidden text-white text-3xl focus:outline-none cursor-pointer"
+          class="lg:hidden text-black text-3xl focus:outline-none cursor-pointer"
         >
           <i id="hamburgerIcon" class="fa-solid fa-bars"></i>
         </button>
@@ -29,24 +31,24 @@
         <!-- Left Menu -->
         <ul
           id="navMenu"
-          class="hidden flex-col space-y-2 font-bold absolute top-14 left-0 w-full lg:w-auto md:pl-16 bg-[#00C04B] p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none"
+          class="hidden flex-col space-y-2 font-semibold absolute top-15 rounded-b-2xl left-2 right-2 md:left-4.5 md:right-4.5 bg-white lg:w-auto md:pl-6 p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none"
         >
           <li
-            class="text-[18px] cursor-pointer hover:text-gray-300 transition-all duration-300"
+            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2"
           >
             <a href="index.html">Home</a>
           </li>
           <li
-            class="text-[18px] cursor-pointer hover:text-gray-300 transition-all duration-300"
+            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2"
           >
             <a href="cooking.html"> Cooking </a>
           </li>
           <li
-            class="flex lg:justify-center items-center gap-2 text-[18px] cursor-pointer active"
+            class="flex lg:justify-center items-center gap-2 cursor-pointer active"
           >
             <a
               href="#"
-              class="flex items-center hover:text-gray-300 transition-all duration-300"
+              class="flex items-center hover:text-gray-500 transition-all duration-300 ml-2"
             >
               Ingredients
               <svg
@@ -67,9 +69,9 @@
             </a>
           </li>
           <li
-            class="text-[18px] cursor-pointer hover:text-gray-300 transition-all duration-300"
+            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2"
           >
-            Blog
+            <a href="blog.html"> Blog </a>
           </li>
         </ul>
 
@@ -83,7 +85,7 @@
         <!-- Search -->
         <div class="flex justify-end">
           <div
-            class="flex items-center border-2 border-white rounded-full px-4 sm:w-full w-[80%] bg-white"
+            class="flex items-center border-2 border-black rounded-full px-2 sm:w-full w-[80%] bg-white"
           >
             <i
               class="fa-solid fa-magnifying-glass text-black cursor-pointer w-5"

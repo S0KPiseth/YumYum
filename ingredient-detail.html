@@ -9,6 +9,7 @@
   </head>
 
   <body
+    onload="showLoader()"
     class="bg-[#00C04B] min-h-screen w-full flex py-8 sm:py-12 px-4 sm:px-8 lg:px-20"
   >
     <!-- FULLSCREEN LOADER -->
@@ -18,7 +19,6 @@
       <img
         src="../assets/images/loading/falafel1.webp"
         id="loadingImage"
-        class="w-40 h-40"
         alt="Loading..."
       />
     </div>
@@ -60,5 +60,11 @@
     </main>
 
     <script type="module" src="/scripts/ingredient-detail-page.js"></script>
+    <script>
+      function showLoader() {
+        const loader = document.querySelector(".ingredient-loader");
+        loader.classList.remove("hidden");
+      }
+    </script>
   </body>
 </html>
