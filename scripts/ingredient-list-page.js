@@ -9,30 +9,28 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     try {
-      const selected = document.querySelectorAll(
-        'input[type="radio"]:checked'
-      );
+      const selected = document.querySelectorAll('input[type="radio"]:checked');
 
       const ingredients =
         JSON.parse(localStorage.getItem("ingredientsList")) || [];
 
       selected.forEach((item) => {
         if (item.value == "relevant") {
-          renderIngredientCard(ingredients);
+          renderIngredientCard(ingredients, 1);
         }
 
         if (item.value == "a-to-z") {
           const aToZ = [...ingredients].sort((a, b) =>
             a.strIngredient.localeCompare(b.strIngredient)
           );
-          renderIngredientCard(aToZ);
+          renderIngredientCard(aToZ, 1);
         }
 
         if (item.value == "z-to-a") {
           const zToA = [...ingredients].sort((a, b) =>
             b.strIngredient.localeCompare(a.strIngredient)
           );
-          renderIngredientCard(zToA);
+          renderIngredientCard(zToA, 1);
         }
       });
     } catch (error) {
@@ -55,5 +53,5 @@ window.searchIngredient = function (event) {
     item.strIngredient.toLowerCase().includes(searchText)
   );
 
-  renderIngredientCard(filteredIngredients);
+  renderIngredientCard(filteredIngredients, 1);
 };
