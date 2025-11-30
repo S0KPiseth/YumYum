@@ -10,6 +10,7 @@ export const playLoading = () => {
       `../assets/images/loading/falafel${i}.webp`
     );
     i++;
+    console.log(loadingImage.src);
   }, 500);
   return intervalID;
 };
