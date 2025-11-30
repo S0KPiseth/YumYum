@@ -12,9 +12,11 @@
 
     <body
         class="bg-[#00C04B] text-white w-screen font-['Geist'] overflow-x-hidden h-screen relative">
-        <header>
-            <nav class="p-2.5 grid grid-cols-3 grid-rows-1">
-                <ul class="flex col-start-1 gap-x-10 items-center">
+        <header
+            class="text-black w-[98vw]  px-2 mx-auto pt-2">
+            <nav
+                class="p-2.5 grid grid-cols-3 grid-rows-1 bg-white rounded-2xl">
+                <ul class="flex col-start-1 gap-x-10 items-center" id="navUL">
                     <li class="active">
                         <a href="index.html">Home</a>
                     </li>
@@ -24,7 +26,7 @@
                     </li>
 
                     <li class="flex items-center">
-                        <a href="ingredients.html" class="flex items-center">
+                        <a href="ingredient.html" class="flex items-center">
                             Ingredients
                             <svg width="22" height="22" viewBox="0 0 22 22"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +87,9 @@
         </div>
 
         <button
+            id="magicBtn"
             class="bg-white rounded-full p-4.5 absolute top-7/8 left-1/2 -translate-x-1/2 -translate-y-1/2"><svg
+                class="cursor-pointer"
                 width="35" height="35" viewBox="0 0 47 47" fill="non2"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -96,7 +100,7 @@
     </div>
 
     <div
-        class="hidden w-screen h-screen flex items-center justify-center bg-white absolute">
+        class="top-0 w-screen h-screen flex items-center justify-center bg-white absolute loadingDiv">
         <img src="assets\images\loading\falafel1.webp" alt="loading"
             id="loadingImage" />
     </div>
