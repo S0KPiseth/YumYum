@@ -1,9 +1,13 @@
+import { token } from "../env.js";
+console.log(token);
 const foodName = document.getElementById("food-name");
 const flag = document.getElementById("flag");
 const bgImg = document.getElementById("bg-img");
 const description = document.getElementById("description");
 const country_name = document.getElementById("country-name");
 const btn = document.getElementById("btn");
+
+//loading logic
 const loadingImage = document.getElementById("loadingImage");
 const loadingContainer = document.getElementById("loadingContainer");
 
@@ -48,7 +52,6 @@ const find_food = async () => {
       );
     }
   }
-  console.log(suggestions);
   if (suggestions["meals"]) {
     for (let i = 0; i < Math.min(10, suggestions["meals"].length); i++) {
       console.log(suggestions["meals"][i]["strMeal"]);
@@ -72,21 +75,25 @@ const find_food = async () => {
 let foodData = null;
 
 async function fetchData() {
+  let res = null;
   let foodId = localStorage.getItem("foodId");
   let timerId = playLoading();
-  if (foodId === "undefined") {
-    foodId = 52973;
+  if (!foodId || foodId === "undefined") {
+    res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+    foodData = await res.json();
+    foodData = foodData["meals"][0];
+    localStorage.setItem("foodId", foodData["idMeal"]);
+    window.location.reload();
   }
   try {
-    const response = await fetch(
+    res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`,
     );
-    foodData = await response.json();
+    foodData = await res.json();
   } catch (err) {
     console.log(err);
   }
   btn.addEventListener("click", () => {
-    // To chang dynamically
     const id = foodData["meals"][0]["idMeal"];
     localStorage.setItem("foodId", id);
     window.location.href = "detail-cooking.html";
@@ -97,14 +104,13 @@ async function fetchData() {
   // To Change dynamically
   const foodNameStr = foodData["meals"][0]["strMeal"];
   foodName.textContent = foodNameStr;
-  const token = "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";
 
   let flagData = null;
-  const header = document.getElementById("header");
   try {
-    header.className = "hidden";
+    const header = document.getElementById("header");
     loadingContainer.className =
-      "block absolute w-screen h-screen flex justify-center items-center inset-0";
+      "block absolute w-screen h-screen flex justify-center items-center inset-0 z-10000";
+    header.className = "hidden";
     const flagResp = await fetch(
       `https://restcountries.com/v3.1/demonym/${countryName}`,
     );
@@ -122,7 +128,7 @@ async function fetchData() {
           messages: [
             {
               role: "user",
-              content: `Write a delicious 2 sentences catching phrases description for the dish: ${foodNameStr} and no double quotes`,
+              content: `Write a delicious 1 sentence catching phrases description for the dish: ${foodNameStr} and no double quotes`,
             },
           ],
           max_tokens: 100,
@@ -153,6 +159,6 @@ async function fetchData() {
   }
 
   const imgSrc = foodData["meals"][0]["strMealThumb"];
-  bgImg.className = `bg-[url(${imgSrc})] bg-center bg-no-repeat bg-cover text-white w-screen font-['Geist'] overflow-x-hidden h-screen relative after:bg-[rgba(0,0,0,0.5)] after:absolute after:inset-0 after:-z-1`;
+  bgImg.className = `bg-[url(${imgSrc})] bg-center bg-no-repeat bg-cover text-white h-screen w-screen font-['Geist'] overflow-x-hidden h-screen relative after:bg-[rgba(0,0,0,0.5)] after:absolute after:inset-0 after:-z-1`;
 }
 fetchData();
