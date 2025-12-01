@@ -18,12 +18,12 @@
     <header class="text-black md:w-[98vw] px-2 mx-auto pt-2">
       <!-- ============== Navbar ============== -->
       <nav
-        class="p-2.5 bg-white flex justify-between items-center gap-4 rounded-2xl"
+        class="p-2.5 bg-white flex justify-between items-center gap-4 rounded-4xl"
       >
         <!-- Hamburger Menu (Mobile Screen) -->
         <button
           id="hamburgerBtn"
-          class="lg:hidden text-black text-3xl focus:outline-none cursor-pointer"
+          class="lg:hidden text-black text-3xl focus:outline-none cursor-pointer ml-3"
         >
           <i id="hamburgerIcon" class="fa-solid fa-bars"></i>
         </button>
@@ -31,7 +31,7 @@
         <!-- Left Menu -->
         <ul
           id="navMenu"
-          class="hidden flex-col space-y-2 font-semibold absolute top-15 rounded-b-2xl left-2 right-2 md:left-4.5 md:right-4.5 bg-white lg:w-auto md:pl-6 p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none"
+          class="md:ml-3 hidden flex-col space-y-2 lg:space-y-0 font-semibold absolute top-16 rounded-t-2xl rounded-b-4xl left-2 right-2 md:left-2t md:right-4 bg-white lg:w-auto md:pl-6 p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none"
         >
           <li
             class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2"
@@ -79,23 +79,23 @@
         <p
           class="font-['Paranoid_Starting'] text-xl sm:text-2xl pl-11 sm:p-0 sm:text-center cursor-pointer"
         >
-          YuMYuM
+          <a href="index.html"> YuMYuM </a>
         </p>
 
         <!-- Search -->
-        <div class="flex justify-end">
+        <div class="flex ml-7 md:ml-0 md:justify-end md:w-[380px]">
           <div
-            class="flex items-center border-2 border-black rounded-full px-2 sm:w-full w-[80%] bg-white"
+            class="flex items-center border-2 border-white rounded-full px-2 sm:w-full w-[75%] bg-[#28282B]"
           >
             <i
-              class="fa-solid fa-magnifying-glass text-black cursor-pointer w-5"
+              class="fa-solid fa-magnifying-glass text-white cursor-pointer text-xl md:text-2xl ml-1 md:ml-2"
             ></i>
             <input
-              class="p-2 outline-none text-black placeholder-black text-[0.9rem] flex-1"
+              class="p-2.5 outline-none text-white text-[1rem] placeholder:text-[15px]"
               type="text"
               name="search-item"
               id="search-item"
-              placeholder="Search any meal..."
+              placeholder="Search any ingredient"
               oninput="searchIngredient(event)"
             />
           </div>
@@ -162,7 +162,7 @@
             </div>
 
             <button
-              class="bg-[#0EB24E] text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-4 cursor-pointer hover:text-black hover:opacity-70 transition-all duration-300"
+              class="bg-white text-black text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-4 cursor-pointer hover:text-black hover:opacity-70 transition-all duration-300"
               type="submit"
             >
               Apply Filters

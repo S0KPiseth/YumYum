@@ -33,7 +33,7 @@ export function renderIngredientCard(list = null, page = 1, perPage = 8) {
           </p>
 
           <button
-            class="see-more-btn bg-black text-white w-[90%] p-2 text-[1rem] font-semibold rounded-md 2xl:w-[70%] cursor-pointer hover:bg-gray-300 hover:text-black transition-all duration-400"
+            class="see-more-btn bg-white text-black w-[90%] p-2 text-[1rem] font-semibold rounded-xl 2xl:w-[70%] cursor-pointer hover:bg-black hover:text-white transition-all duration-400"
             data-ingredient="${item.strIngredient}"
             data-ingredientImage="${item.strThumb}"
           >
@@ -72,8 +72,8 @@ function renderPagination(totalPages, currentPage, list) {
     btn.className =
       `px-3 py-1 rounded-md font-semibold ` +
       (i === currentPage
-        ? "bg-black text-white"
-        : "bg-[#0EB24E] text-black hover:bg-gray-300 transition-all");
+        ? "bg-white text-black"
+        : "bg-[#0EB24E] text-white hover:bg-gray-300 transition-all");
 
     btn.addEventListener("click", () => {
       renderIngredientCard(list, i);
