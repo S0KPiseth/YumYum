@@ -1,29 +1,10 @@
-const playLoading = () => {
-  let i = 1;
-  const intervalID = setInterval(() => {
-    if (i > 4) {
-      i = 1;
-    }
-    loadingImage.src = `assets/images/loading/falafel${i}.webp`;
-    i++;
-  }, 500);
-  return intervalID;
-};
-
 export async function renderIngredientInfo(data) {
-  const loader = document.querySelector(".ingredient-loader");
-  loader.classList.remove("hidden");
-
-  const loadingID = playLoading();
-
   document.querySelector(".js-ingredient-info").innerHTML = "";
   document.querySelector(".js-ingredient-image").innerHTML = "";
 
   if (!data) return;
 
   const ingredientImage = localStorage.getItem("selectedIngredientImage");
-
-  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   document.querySelector(".js-ingredient-image").innerHTML = `
     <img src="${ingredientImage}" class="h-full w-full object-cover transition-all" />
@@ -53,8 +34,7 @@ export async function renderIngredientInfo(data) {
     </ul>
   `;
 
-  clearInterval(loadingID);
-  loader.classList.add("hidden");
+  // loader.classList.add("hidden");
 }
 
 function generateNutrientHTML(data) {
@@ -98,13 +78,14 @@ export function renderIngredientRelatedInfo(data) {
           <img
             src="${item.strMealThumb}"
             alt="${item.strMeal}"
-            class="md:w-[75%] xl:w-[80%] rounded-3xl group-hover:scale-105 transition-all duration-300"
+            class="md:w-[75%] xl:w-[80%] rounded-3xl group-hover:scale-105 transition-all duration-300 image-meal-click cursor-pointer"
+            data-mealid="${item.idMeal}"
           />
   
           <p class="font-semibold lg:text-md xl:text-lg 2xl:text-xl truncate w-full text-center">${item.strMeal}</p>
   
           <button
-            class="see-meal-btn bg-black text-white py-2 px-3 text-sm xl:text-[1rem] font-semibold rounded-md 2xl:w-[50%] cursor-pointer hover:bg-white hover:text-black transition-all duration-500"
+            class="see-meal-btn bg-white text-black py-2 px-3 text-sm xl:text-[1rem] font-semibold rounded-xl 2xl:w-[50%] cursor-pointer hover:bg-black hover:text-white transition-all duration-500"
             data-mealid="${item.idMeal}"
           >
             See more
@@ -128,7 +109,13 @@ document.addEventListener("click", (e) => {
     const mealID = e.target.dataset.mealid;
 
     localStorage.setItem("foodId", mealID);
+    window.location.href = "each_food.html";
+  }
 
-    window.location.href = "detail-cooking.html";
+  if (e.target.classList.contains("image-meal-click")) {
+    const mealID = e.target.dataset.mealid;
+
+    localStorage.setItem("foodId", mealID);
+    window.location.href = "each_food.html";
   }
 });

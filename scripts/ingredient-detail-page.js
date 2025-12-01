@@ -5,9 +5,6 @@ import {
 
 const ingredientName = localStorage.getItem("selectedIngredient");
 
-const ingredientCacheKey = `ingredient-${ingredientName}`;
-const relatedCacheKey = `related-${ingredientName}`;
-
 async function fetchIngredientInfo(name) {
   const response = await fetch(
     `https://api.nal.usda.gov/fdc/v1/foods/search?query=${name}&api_key=Px6oRFRFyrdwzskZGYzL07Agz7pCjVjEPjAvU4Ei`
@@ -26,21 +23,34 @@ async function fetchRelatedFoods(name) {
   return data;
 }
 
+const loader = document.querySelector(".ingredient-loader");
+const loadingImage = document.getElementById("loadingImage");
+
+const playLoading = () => {
+  let i = 1;
+  return setInterval(() => {
+    if (i > 4) i = 1;
+    loadingImage.src = `../assets/images/loading/falafel${i}.webp`;
+    i++;
+  }, 500);
+};
+
 async function initPage() {
+  loader.classList.remove("hidden");
+
+  let loadingID = playLoading();
+
   try {
-    if (ingredientName) {
-      localStorage.removeItem(ingredientCacheKey);
-      localStorage.removeItem(relatedCacheKey);
-    }
-    // Render ingredient info
     const ingredientData = await fetchIngredientInfo(ingredientName);
     renderIngredientInfo(ingredientData);
 
-    // Render related foods
     const relatedData = await fetchRelatedFoods(ingredientName);
     renderIngredientRelatedInfo(relatedData);
   } catch (err) {
     console.error("Error loading ingredient details:", err);
+  } finally {
+    clearInterval(loadingID);
+    loader.classList.add("hidden");
   }
 }
 
