@@ -21,6 +21,21 @@ function preloadImages(urls) {
   );
 }
 
+const handleHoverMagic = () => {
+  const hero = document.querySelector(".hero");
+  const altHero = document.querySelector(".altHero");
+  hero.classList.add("-translate-x-[200%]");
+
+  altHero.classList.remove("translate-x-full");
+};
+const handleBlur = () => {
+  const hero = document.querySelector(".hero");
+  const altHero = document.querySelector(".altHero");
+  hero.classList.remove("-translate-x-[200%]");
+
+  altHero.classList.add("translate-x-full");
+};
+
 preloadImages(falafelFrames).then((images) => {
   falafelLoaded = images;
   loadingImage.src = images[0].src;
@@ -52,11 +67,11 @@ preloadImages(falafelFrames).then((images) => {
             <nav
                 class="px-7 py-4 grid grid-cols-3 grid-rows-1 relative bg-white rounded-4xl">
                 <ul class="flex col-start-1 gap-x-10 items-center" id="navUL">
-                    <li >
+                    <li class="active">
                         <a href="index.html">Home</a>
                     </li>
 
-                    <li class="active">
+                    <li>
                         <a href="cooking.html">Cooking</a>
                     </li>
 
@@ -104,7 +119,7 @@ preloadImages(falafelFrames).then((images) => {
         <div
             class="w-screen justify-center flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div
-                class="w-2/7 bg-[url('./assets/images/home/image2.png')] aspect-square bg-center bg-cover">
+                class="w-3/9 bg-[url('../assets/images/home/image2.png')] aspect-square bg-center bg-cover">
                 &nbsp;
             </div>
         </div>
@@ -112,19 +127,21 @@ preloadImages(falafelFrames).then((images) => {
         <div class="w-screen justify-center flex">
 
             <p
-                class="text-[26vw] text-nowrap uppercase font-['aalto'] absolute top-[55%] -translate-x-1/2 -translate-y-1/2 hero left-1/2 opacity-0">
+                class="text-[26vw] text-nowrap uppercase font-['aalto'] absolute top-[55%] -translate-x-1/2 -translate-y-1/2 hero left-1/2 opacity-0 transition duration-1000">
                 pick. cook. wow.</p>
+                    <p
+            class="text-[26vw] text-nowrap uppercase font-['aalto'] absolute top-[55%] -translate-x-1/2 -translate-y-1/2 translate-x-full left-1/2 transition duration-2000 altHero">Get Random Meal</p>
         </div>
 
         <div
             class="w-screen justify-between flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div
-                class=" w-2/7 bg-[url('./assets/images/home/image1.png')] aspect-square bg-center bg-cover opacity-animation">
+                class=" w-2/7 bg-[url('./assets/images/home/image1.png')] aspect-square bg-center bg-cover opacity-animation opacity-0">
                 &nbsp;
             </div>
 
             <div
-                class="w-2/7 bg-[url('./assets/images/home/image3.png')] aspect-square bg-center bg-cover opacity-animation">
+                class="w-2/7 bg-[url('./assets/images/home/image3.png')] aspect-square bg-center bg-cover opacity-animation opacity-0">
                 &nbsp;
             </div>
         </div>
@@ -183,6 +200,8 @@ preloadImages(falafelFrames).then((images) => {
               }
             });
         });
+        magicBtn.addEventListener("mouseover", handleHoverMagic);
+        magicBtn.addEventListener("mouseout", handleBlur);
 
         magicBtn.addEventListener("click", () => {
           console.log("hi");

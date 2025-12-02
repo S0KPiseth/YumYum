@@ -48,6 +48,9 @@
 .opacity-animation{
   animation: opacity;
   animation-duration: 3s;
+  animation-delay: 2500ms;
+  animation-fill-mode: forwards;
+
 
 }
 
@@ -62,7 +65,7 @@
   }
 }
 .hero{
- animation: opacity 1ms 2s forwards, leftEnter 2s linear 2s;
+ animation: opacity 1ms 1ms forwards, leftEnter ease-in 2s  1ms;
 
 }
 
