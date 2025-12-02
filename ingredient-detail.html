@@ -9,7 +9,6 @@
   </head>
 
   <body
-    onload="showLoader()"
     class="bg-[#00C04B] min-h-screen w-full flex py-8 sm:py-12 px-4 sm:px-8 lg:px-20"
   >
     <!-- FULLSCREEN LOADER -->
@@ -27,9 +26,23 @@
       <header class="flex items-center justify-end px-4 sm:px-6 py-2">
         <a
           href="/ingredient.html"
-          class="cursor-pointer font-bold text-2xl sm:text-3xl p-2 rounded-full hover:bg-white/10"
-          >X</a
+          class="cursor-pointer font-bold pt-1.5 text-white hover:text-black transition-all duration-300"
         >
+          <svg
+            width="40px"
+            height="40px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20 20L4 4.00003M20 4L4.00002 20"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </a>
       </header>
 
       <hr class="h-0.5 border-none bg-white mx-6 mt-2" />
@@ -60,11 +73,5 @@
     </main>
 
     <script type="module" src="/scripts/ingredient-detail-page.js"></script>
-    <script>
-      function showLoader() {
-        const loader = document.querySelector(".ingredient-loader");
-        loader.classList.remove("hidden");
-      }
-    </script>
   </body>
 </html>
