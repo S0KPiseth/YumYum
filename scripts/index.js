@@ -1,25 +1,17 @@
-const imageUrls = [
-  'assets/images/home/image1.png',
-  'assets/images/home/image2.png',
-  'assets/images/home/image3.png',
-];
+const countryFlags = ["gb", "us", "fr", "ca", "jm", "cn", "nl", "eg", "gr", "in", "ie", "it", "jp", "kn", "my", "mx", "ma", "hr", "no", "pt", "ru", "ar", "es", "sk", "th", "sa", "vn", "tr", "sy", "dz", "tn", "pl", "ph", "ua", "uy", "au", "ve"];
 
+const imageUrls = ["assets/images/home/image1.png", "assets/images/home/image2.png", "assets/images/home/image3.png"];
+const falafelFrames = ["assets/images/loading/falafel1.webp", "assets/images/loading/falafel2.webp", "assets/images/loading/falafel3.webp", "assets/images/loading/falafel4.webp"];
 const loadingImage = document.getElementById("loadingImage");
 const loadingDiv = document.querySelector(".loadingDiv");
 
-const falafelFrames = [
-  "assets/images/loading/falafel1.webp",
-  "assets/images/loading/falafel2.webp",
-  "assets/images/loading/falafel3.webp",
-  "assets/images/loading/falafel4.webp",
-];
-
 let falafelLoaded = [];
+let selectedCountry = "British";
 
 function preloadImages(urls) {
   return Promise.all(
-    urls.map(url => {
-      return new Promise(resolve => {
+    urls.map((url) => {
+      return new Promise((resolve) => {
         const img = new Image();
         img.src = url;
         img.onload = () => resolve(img);
@@ -29,14 +21,14 @@ function preloadImages(urls) {
   );
 }
 
-preloadImages(falafelFrames).then(images => {
+preloadImages(falafelFrames).then((images) => {
   falafelLoaded = images;
   loadingImage.src = images[0].src;
 
   let loadProgress = 0;
   const total = imageUrls.length;
 
-  imageUrls.forEach(url => {
+  imageUrls.forEach((url) => {
     const img = new Image();
     img.src = url;
 
@@ -50,20 +42,21 @@ preloadImages(falafelFrames).then(images => {
 
       loadingImage.src = falafelLoaded[frame].src;
 
+      // class="text-black w-[98vw]  px-2 mx-auto pt-2 nav opacity-0">
       if (frame === falafelLoaded.length - 1) {
         loadingDiv.classList.add("hidden");
         document.body.innerHTML = `
-        
+
         <header
-            class="text-black w-[98vw]  px-2 mx-auto pt-2 nav opacity-0">
+            class="text-black w-[98vw]  px-2 mx-auto pt-2">
             <nav
-                class="p-2.5 grid grid-cols-3 grid-rows-1 bg-white rounded-2xl">
+                class="px-7 py-4 grid grid-cols-3 grid-rows-1 relative bg-white rounded-4xl">
                 <ul class="flex col-start-1 gap-x-10 items-center" id="navUL">
-                    <li class="active">
+                    <li >
                         <a href="index.html">Home</a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="cooking.html">Cooking</a>
                     </li>
 
@@ -87,18 +80,26 @@ preloadImages(falafelFrames).then(images => {
 
                 <p
                     class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl">YuMYuM</p>
-                <div class="col-start-3 flex gap-x-3 justify-end">
-                    Cuisine
-                    <select name id>
-                        <option value>
-                            KH
-                            <img src="https://flagcdn.com/w80/kh.png" alt>
-                        </option>
-                    </select>
+		<div class="flex items-center justify-end rounded-full">
+        <p>Cuisine: </p>
+        
+        <div name="cuisine" class="cuisine flex flex-col relative w-20 group" tabindex="0">
+        <div  class="border border-white group-focus:border-black group-focus:outline-0 border-b-0 flex items-center justify-between p-1.5" >
 
-                </div>
-            </nav>
+        <img id="flagDisplay" class="h-5 w-8 aspect-video"/>
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.5 8.25L11 13.75L16.5 8.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        
+        
+        </div>
+        <div class="w-full h-80 absolute top-full left-0 bg-white z-40 overflow-y-scroll border rounded-b-xl border-t-0 hidden group-focus:block" id = "dropDownDiv"></div>
+        </div>
+
+		</div>
         </header>
+        
 
         <div
             class="w-screen justify-center flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -144,31 +145,60 @@ preloadImages(falafelFrames).then(images => {
         
         
         
-        `
+        `;
 
-const magicBtn = document.getElementById("magicBtn");
+        const magicBtn = document.getElementById("magicBtn");
+        const cuisine = document.querySelector(".cuisine");
+        const dropDownDiv = document.getElementById("dropDownDiv");
+        const flagDisplay = document.getElementById("flagDisplay");
+        countryFlags.forEach((e) => {
+          fetch(`https://restcountries.com/v3.1/alpha/${e}`, { method: "GET" })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data[0].flags.png);
+              const itemDiv = document.createElement("div");
+              itemDiv.className = "h-fit flex justify-between gap-x-2 hover:bg-gray-400 items-center p-1.5 cursor-pointer";
 
-magicBtn.addEventListener("click", ()=>{
-fetch('https://themealdb.com/api/json/v1/1/random.php').then(res=>res.json()).then(data=>{
-  localStorage.setItem("mealId",data.meals[0].idMeal)
-  window.location.href="/each_food.html"
-  
-}).catch(e=>console.log(e))
+              const flagImg = document.createElement("img");
+              flagImg.src = data[0].flags.png;
+              flagImg.className = "h-5 w-8 aspect-video";
 
+              const countryCode = document.createElement("p");
+              countryCode.className = "grow";
+              countryCode.textContent = data[0].cca2;
 
+              itemDiv.addEventListener("click", () => {
+                flagDisplay.setAttribute("src", data[0].flags.png);
+                document.body.focus();
+                selectedCountry = data[0].demonyms.eng.m;
+              });
 
+              itemDiv.appendChild(flagImg);
+              itemDiv.appendChild(countryCode);
 
+              dropDownDiv.appendChild(itemDiv);
 
-})
+              if (e === "gb") {
+                flagDisplay.setAttribute("src", data[0].flags.png);
+              }
+            });
+        });
+
+        magicBtn.addEventListener("click", () => {
+          console.log("hi");
+          fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${selectedCountry}`)
+            .then((res) => res.json())
+            .then((data) => {
+              const mealList = data.meals;
+
+              localStorage.setItem("foodId", mealList[Math.floor(Math.random() * mealList.length)].idMeal);
+              window.location.href = "/each_food.html";
+            })
+            .catch((e) => console.log(e));
+        });
       }
     };
 
     img.onerror = () => loadProgress++;
   });
 });
-
-
-
-
-
-
