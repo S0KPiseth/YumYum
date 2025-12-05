@@ -64,24 +64,19 @@
     scale:1
   }
 }
-.hero{
- animation: opacity 1ms 1ms forwards, leftEnter ease-in 2s  1ms;
-
-}
-
-#magicBtn{
- animation: opacity 1ms 4s forwards, verticalEnter 500ms linear 4s;
-
-}
 
 .nav{
- animation: opacity 1ms 4s forwards, TopEnter 500ms linear 4s;
+ animation: opacity 1ms 2s forwards, TopEnter 500ms linear 2s;
 
 }
+.loadingAnimation{
+  animation: zoomIn 2s ease-in forwards;
+}
+
 
 @keyframes verticalEnter{
   from{
-    transform: translateY(150%);
+    transform: translateY(200%);
 
   }
   to{
@@ -107,4 +102,25 @@
   to{
     transform: translateX(0%);
   }
+}
+@keyframes zoomIn{
+  from{
+    width: 44.44444%;
+  }to{
+    width: 28.571429%;
+  }
+}
+
+.about p{
+font-size: large;
+font-family: "Geist";
+font-weight: bold;
+
+}
+
+.about p:nth-child(1){
+font-size: large;
+font-weight: 400;
+font-size: small;
+
 }
