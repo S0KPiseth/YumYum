@@ -6,7 +6,7 @@
     </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>YumYum</title>
     <link rel="stylesheet" href="css\index.css">
 
     </style>
@@ -14,8 +14,7 @@
 
 <body class="bg-[#00C04B] text-white w-screen font-['Geist']  h-screen relative">
         <header
-            class="text-black w-[98vw]  px-2 mx-auto pt-2 " 		id="header"
->
+            class="text-black w-[98vw]  px-2 mx-auto pt-2 " >
             <nav
                 class="px-7 py-4 grid grid-cols-3 grid-rows-1 relative bg-white rounded-4xl">
                 <ul class="flex col-start-1 gap-x-10 items-center" id="navUL">
@@ -46,28 +45,18 @@
                 </ul>
 
                 <p
-                    class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl">YuMYuM</p>
-		<div id="container" class="flex flex-col absolute bg-[#28282B]  rounded-full right-3 top-2.5  w-100 py-2 pl-5 ">
-		<div class=" flex" >
-			<svg width="29" height="29" class="mr-4" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M25.375 25.375L20.1188 20.1188M22.9583 13.2917C22.9583 18.6304 18.6304 22.9583 13.2917 22.9583C7.95291 22.9583 3.625 18.6304 3.625 13.2917C3.625 7.95291 7.95291 3.625 13.2917 3.625C18.6304 3.625 22.9583 7.95291 22.9583 13.2917Z" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
-			<input type="text" class="text-white focus:outline-none" placeholder="Search any meal" id="search-input">
-		</div>
+                    class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl"><a href="index.html">YuMYuM</a></p>
+		<div id="container" class="absolute  rounded-3xl bg-black right-3 top-2.5 w-100 h-fit py-2 peer">
+			<div class="flex w-full h-full peer mx-3">
+				<svg width="29" height="29" class="mr-4" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M25.375 25.375L20.1188 20.1188M22.9583 13.2917C22.9583 18.6304 18.6304 22.9583 13.2917 22.9583C7.95291 22.9583 3.625 18.6304 3.625 13.2917C3.625 7.95291 7.95291 3.625 13.2917 3.625C18.6304 3.625 22.9583 7.95291 22.9583 13.2917Z" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				<input type="text" autocompleted="off" class="text-white focus:outline-none" placeholder="Search any meal" id="search-input">
+			</div>
+			<div id="suggestionsContainer" class=" text-white hidden flex-col gap-2  overflow-y-scroll h-100 m-3">
+			</div>
 
 		</div>
-		
-	
-                <!-- <div class="col-start-3 flex gap-x-3 justify-end"> -->
-                <!--     Cuisine -->
-                <!--     <select name id> -->
-                <!--         <option value> -->
-                <!--             KH -->
-                <!--             <img src="https://flagcdn.com/w80/kh.png" alt> -->
-                <!--         </option> -->
-                <!--     </select> -->
-                <!---->
-                <!-- </div> -->
             </nav>
         </header>
     <main>
