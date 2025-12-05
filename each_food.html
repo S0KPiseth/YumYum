@@ -10,32 +10,52 @@
 </head>
 
 <body id="bg-img" class="bg-center bg-no-repeat bg-cover text-white w-screen font-['Geist'] overflow-x-hidden h-screen relative ">
-    <header id="header">
-        <nav class="relative p-5.5 grid grid-cols-2 grid-rows-1 w-[75%]">
-            <ul class="flex col-start-1 gap-x-10 items-center mx-auto">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="cooking.html">Cooking</a></li>
-                <li class="flex items-center"><a href="ingredient.html">Ingredients</a> <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.5 8.25L11 13.75L16.5 8.25" stroke="white" stroke-width="4" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </li>
-                <li>Blog</li>
-            </ul>
-	    
-            <p class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl my-auto">YuMYuM</p>
-	    <div  class="absolute left-[100%] top-[13%] flex flex-col bg-white text-black w-100  py-3 rounded-full" id="container">
-		    <div class="relative flex items-center ml-4" >
-			<svg width="29" height="29" class="mr-4" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M25.375 25.375L20.1188 20.1188M22.9583 13.2917C22.9583 18.6304 18.6304 22.9583 13.2917 22.9583C7.95291 22.9583 3.625 18.6304 3.625 13.2917C3.625 7.95291 7.95291 3.625 13.2917 3.625C18.6304 3.625 22.9583 7.95291 22.9583 13.2917Z" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
-			<input id="search-input" type="text" class="focus:outline-none " placeholder="Search">
-		    </div>
+        <header
+            class="text-black w-[98vw]  px-2 mx-auto pt-2 " >
+            <nav
+                class="px-7 py-4 grid grid-cols-3 grid-rows-1 relative bg-white rounded-4xl">
+                <ul class="flex col-start-1 gap-x-10 items-center" id="navUL">
+                    <li >
+                        <a href="index.html">Home</a>
+                    </li>
 
-	    </div>
-        </nav>
-    </header>
+                    <li class="active">
+                        <a href="cooking.html">Cooking</a>
+                    </li>
+
+                    <li class="flex items-center">
+                        <a href="ingredient.html" class="flex items-center">
+                            Ingredients
+                            <svg width="22" height="22" viewBox="0 0 22 22"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 8.25L11 13.75L16.5 8.25"
+                                    stroke="white" stroke-width="4"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="blog.html">Blog</a>
+                    </li>
+                </ul>
+
+                <p
+                    class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl"><a href="index.html">YuMYuM</a></p>
+		<div id="container" class="absolute  rounded-3xl bg-black right-3 top-2.5 w-100 h-fit py-2 peer">
+			<div class="flex w-full h-full peer mx-3">
+				<svg width="29" height="29" class="mr-4" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M25.375 25.375L20.1188 20.1188M22.9583 13.2917C22.9583 18.6304 18.6304 22.9583 13.2917 22.9583C7.95291 22.9583 3.625 18.6304 3.625 13.2917C3.625 7.95291 7.95291 3.625 13.2917 3.625C18.6304 3.625 22.9583 7.95291 22.9583 13.2917Z" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				<input type="text" autocompleted="off" class="text-white focus:outline-none" placeholder="Search any meal" id="search-input">
+			</div>
+			<div id="suggestionsContainer" class=" text-white hidden flex-col gap-2  overflow-y-scroll h-100 m-3">
+			</div>
+
+		</div>
+            </nav>
+        </header>
     <main class="">
 	    <div class="mb-8 mt-10 ml-10">
 		    <p class="font-['aalto'] text-[150px] " id="food-name"></p>
@@ -52,12 +72,12 @@
 		</svg>
 	    </div>
     </main>
-
     <div
-        class="hidden w-screen h-screen flex items-center justify-center bg-white absolute" id="loadingContainer">
+        class=" hidden absolute inset-0" id="loadingContainer">
         <img src="assets\images\loading\falafel1.webp" alt="loading"
             id="loadingImage" />
     </div>
+
     <script src="scripts/each-food.js" type="module"></script>
 	</body>
 </html>

@@ -1,50 +1,59 @@
 // Search feature
 const searchInput = document.getElementById("search-input");
-const searchSuggestionContainer = document.getElementById("container");
+const container = document.getElementById("container");
+const suggestionsContainer = document.getElementById("suggestionsContainer");
+searchInput.addEventListener("focus", () => {
+  suggestionsContainer.classList.remove("hidden");
+});
+document.addEventListener("click", (e) => {
+  if (!container.contains(e.target)) {
+    suggestionsContainer.classList.add("hidden");
+  }
+});
 let searchQuery = null;
 let searchTimeout = null;
 searchInput.addEventListener("input", (e) => {
-  console.log(e.target.value);
   searchQuery = e.target.value;
   clearTimeout(searchTimeout);
   if (searchQuery) {
     searchTimeout = setTimeout(() => {
       find_food(searchQuery);
     }, 1000);
+  } else {
+    suggestionsContainer.innerText = "Please Type Anything to Search";
+    suggestionsContainer.classList.add("text-center");
   }
 });
-let length = 0;
+
 const find_food = async () => {
   const resp = await fetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`,
   );
+  const linkContainer = document.createElement("div");
   const suggestions = await resp.json();
-  if (length > 0) {
-    console.log(length);
-    for (let i = 0; i < Math.min(10, length); i++) {
-      searchSuggestionContainer.removeChild(
-        searchSuggestionContainer.lastElementChild,
-      );
-    }
+  if (!suggestions["meals"]) {
+    suggestionsContainer.innerText = "Search Not Found";
+    suggestionsContainer.classList.add("text-center");
+  } else {
+    suggestionsContainer.classList.remove("text-center");
   }
-  console.log(suggestions);
+  linkContainer.className = "flex flex-col gap-2 h-fit ";
   if (suggestions["meals"]) {
-    for (let i = 0; i < Math.min(10, suggestions["meals"].length); i++) {
-      console.log(suggestions["meals"][i]["strMeal"]);
-      const a = document.createElement("a");
-      a.textContent = suggestions["meals"][i]["strMeal"];
-      a.className =
-        "hover:bg-[rgba(128,128,128,0.1)] p-3 cursor-pointer w-full";
-      a.addEventListener("click", () => {
-        localStorage.setItem("foodId", suggestions["meals"][i]["idMeal"]);
+    for (let i = 0; i < suggestions["meals"].length; i++) {
+      const id = suggestions["meals"][i]["idMeal"];
+      const name = suggestions["meals"][i]["strMeal"];
+      const p = document.createElement("p");
+      p.addEventListener("click", () => {
+        localStorage.setItem("foodId", id);
         window.location.href = "each_food.html";
       });
-      searchSuggestionContainer.appendChild(a);
-      searchSuggestionContainer.classList.add("rounded-lg");
+      p.className =
+        "hover:bg-[rgba(128,128,128,0.3)] cursor-pointer p-2 rounded-lg";
+      p.textContent = name;
+      linkContainer.appendChild(p);
     }
-    length = suggestions["meals"].length;
-  } else {
-    length = 0;
+    suggestionsContainer.innerHTML = "";
+    suggestionsContainer.appendChild(linkContainer);
   }
 };
 
@@ -108,7 +117,7 @@ async function fetchData() {
 
     const detail = document.createElement("div");
     detail.className =
-      "absolute inset-0 bg-[#D9D9D9]  -z-1 w-full  flex items-end";
+      "absolute inset-0 bg-[#D9D9D9] -z-1 w-full  flex items-end";
     const name = document.createElement("p");
     const name_span = document.createElement("span");
     name_span.textContent = ingredients[i];

@@ -1,5 +1,3 @@
-import { token } from "../env.js";
-console.log(token);
 const foodName = document.getElementById("food-name");
 const flag = document.getElementById("flag");
 const bgImg = document.getElementById("bg-img");
@@ -17,6 +15,7 @@ const playLoading = () => {
     if (i > 4) {
       i = 1;
     }
+    loadingContainer.classList.add("block");
     loadingImage.src = `assets/images/loading/falafel${i}.webp`;
     i++;
   }, 500);
@@ -25,7 +24,16 @@ const playLoading = () => {
 
 // Search feature
 const searchInput = document.getElementById("search-input");
-const searchSuggestionContainer = document.getElementById("container");
+const container = document.getElementById("container");
+const suggestionsContainer = document.getElementById("suggestionsContainer");
+searchInput.addEventListener("focus", () => {
+  suggestionsContainer.classList.remove("hidden");
+});
+document.addEventListener("click", (e) => {
+  if (!container.contains(e.target)) {
+    suggestionsContainer.classList.add("hidden");
+  }
+});
 let searchQuery = null;
 let searchTimeout = null;
 searchInput.addEventListener("input", (e) => {
@@ -35,64 +43,55 @@ searchInput.addEventListener("input", (e) => {
     searchTimeout = setTimeout(() => {
       find_food(searchQuery);
     }, 1000);
+  } else {
+    suggestionsContainer.innerText = "Please Type Anything to Search";
+    suggestionsContainer.classList.add("text-center");
   }
 });
-let length = 0;
-let desp = null;
+
 const find_food = async () => {
   const resp = await fetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`,
   );
+  const linkContainer = document.createElement("div");
   const suggestions = await resp.json();
-  if (length > 0) {
-    console.log(length);
-    for (let i = 0; i < Math.min(10, length); i++) {
-      searchSuggestionContainer.removeChild(
-        searchSuggestionContainer.lastElementChild,
-      );
-    }
+  if (!suggestions["meals"]) {
+    suggestionsContainer.innerText = "Search Not Found";
+    suggestionsContainer.classList.add("text-center");
+  } else {
+    suggestionsContainer.classList.remove("text-center");
   }
+  linkContainer.className = "flex flex-col gap-2 h-fit";
   if (suggestions["meals"]) {
-    for (let i = 0; i < Math.min(10, suggestions["meals"].length); i++) {
-      console.log(suggestions["meals"][i]["strMeal"]);
-      const a = document.createElement("a");
-      a.textContent = suggestions["meals"][i]["strMeal"];
-      a.className =
-        "hover:bg-[rgba(128,128,128,0.1)] p-3 cursor-pointer w-full";
-      a.addEventListener("click", () => {
-        localStorage.setItem("foodId", suggestions["meals"][i]["idMeal"]);
+    for (let i = 0; i < suggestions["meals"].length; i++) {
+      const id = suggestions["meals"][i]["idMeal"];
+      const name = suggestions["meals"][i]["strMeal"];
+      const p = document.createElement("p");
+      p.addEventListener("click", () => {
+        localStorage.setItem("foodId", id);
         window.location.href = "each_food.html";
       });
-      searchSuggestionContainer.appendChild(a);
-      searchSuggestionContainer.classList.add("rounded-lg");
+      p.className =
+        "hover:bg-[rgba(128,128,128,0.3)] cursor-pointer p-2 rounded-lg";
+      p.textContent = name;
+      linkContainer.appendChild(p);
     }
-    length = suggestions["meals"].length;
-  } else {
-    length = 0;
+    suggestionsContainer.innerHTML = "";
+    suggestionsContainer.appendChild(linkContainer);
   }
 };
 
 let foodData = null;
 
 async function fetchData() {
-  let res = null;
   let foodId = localStorage.getItem("foodId");
-  let timerId = playLoading();
-  if (!foodId || foodId === "undefined") {
-    res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
-    foodData = await res.json();
-    foodData = foodData["meals"][0];
-    localStorage.setItem("foodId", foodData["idMeal"]);
-    window.location.reload();
+  if (foodId === "undefined") {
+    foodId = 52973;
   }
-  try {
-    res = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`,
-    );
-    foodData = await res.json();
-  } catch (err) {
-    console.log(err);
-  }
+  const response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`,
+  );
+  foodData = await response.json();
   btn.addEventListener("click", () => {
     const id = foodData["meals"][0]["idMeal"];
     localStorage.setItem("foodId", id);
@@ -100,21 +99,28 @@ async function fetchData() {
   });
   const countryName = foodData["meals"][0]["strArea"].toLowerCase();
 
-  //
-  // To Change dynamically
   const foodNameStr = foodData["meals"][0]["strMeal"];
   foodName.textContent = foodNameStr;
+  const token = "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";
 
-  let flagData = null;
+  let timerId = playLoading();
   try {
-    const header = document.getElementById("header");
     loadingContainer.className =
-      "block absolute w-screen h-screen flex justify-center items-center inset-0 z-10000";
-    header.className = "hidden";
+      "block z-100 bg-white inset-0 absolute flex items-center justify-center";
     const flagResp = await fetch(
       `https://restcountries.com/v3.1/demonym/${countryName}`,
     );
-    flagData = await flagResp.json();
+    const flagsData = await flagResp.json();
+    if (flagsData[0]) {
+      const flag_png = flagsData[0]["flags"]["png"];
+      flag.src = flag_png;
+      country_name.className = "hidden";
+      flag.className = "block w-15";
+    } else {
+      country_name.textContent = foodData["meals"][0]["strArea"];
+      country_name.className = "block text-3xl ";
+      flag.className = "hidden";
+    }
     const resp = await fetch(
       `https://router.huggingface.co/v1/chat/completions`,
       {
@@ -128,7 +134,7 @@ async function fetchData() {
           messages: [
             {
               role: "user",
-              content: `Write a delicious 1 sentence catching phrases description for the dish: ${foodNameStr} and no double quotes`,
+              content: `Write a delicious 2 sentences catching phrases description for the dish: ${foodNameStr} and no double quotes`,
             },
           ],
           max_tokens: 100,
@@ -136,29 +142,16 @@ async function fetchData() {
         }),
       },
     );
-    desp = await resp.json();
+    const desp = await resp.json();
+    description.textContent = desp.choices[0].message.content;
+
+    const imgSrc = foodData["meals"][0]["strMealThumb"];
+    bgImg.className = `bg-[url(${imgSrc})] bg-center bg-no-repeat bg-cover text-white w-screen font-['Geist'] overflow-x-hidden h-screen relative after:bg-[rgba(0,0,0,0.5)] after:absolute after:inset-0 after:-z-1`;
   } catch (err) {
     console.log(err);
   } finally {
-    header.className = "block";
     clearInterval(timerId);
-    loadingContainer.className = "hidden";
+    loadingContainer.classList.add("hidden");
   }
-  description.textContent = desp.choices[0].message.content;
-
-  if (flagData[0]) {
-    const flag_png = flagData[0]["flags"]["png"];
-    flag.src = flag_png;
-    flag.title = countryName;
-    country_name.className = "hidden";
-    flag.className = "block w-15";
-  } else {
-    country_name.textContent = foodData["meals"][0]["strArea"];
-    country_name.className = "block text-3xl ";
-    flag.className = "hidden";
-  }
-
-  const imgSrc = foodData["meals"][0]["strMealThumb"];
-  bgImg.className = `bg-[url(${imgSrc})] bg-center bg-no-repeat bg-cover text-white h-screen w-screen font-['Geist'] overflow-x-hidden h-screen relative after:bg-[rgba(0,0,0,0.5)] after:absolute after:inset-0 after:-z-1`;
 }
 fetchData();
