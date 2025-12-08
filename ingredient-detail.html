@@ -5,42 +5,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/index.css" />
-    <title>YUMYUM</title>
+    <title>YumYum | Your digital cook book</title>
   </head>
 
   <body
-    class="bg-[#00C04B] min-h-screen w-full flex py-8 sm:py-12 px-4 sm:px-8 lg:px-20"
-  >
+    class="bg-[#00C04B] min-h-screen w-full flex py-8 sm:py-12 px-4 sm:px-8 lg:px-20">
     <!-- FULLSCREEN LOADER -->
     <div
-      class="ingredient-loader fixed inset-0 flex items-center justify-center bg-white z-50 hidden"
-    >
+      class="ingredient-loader fixed inset-0 flex items-center justify-center bg-white z-50 hidden">
       <img
         src="../assets/images/loading/falafel1.webp"
         id="loadingImage"
-        alt="Loading..."
-      />
+        alt="Loading..." />
     </div>
 
     <main class="bg-[#0EB24E] flex-1 rounded-xl flex flex-col">
       <header class="flex items-center justify-end px-4 sm:px-6 py-2">
         <a
           href="/ingredient.html"
-          class="cursor-pointer font-bold pt-1.5 text-white hover:text-black transition-all duration-300"
-        >
+          class="cursor-pointer font-bold pt-1.5 text-white hover:text-black transition-all duration-300">
           <svg
             width="40px"
             height="40px"
             viewBox="0 0 24 24"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20 20L4 4.00003M20 4L4.00002 20"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
-            />
+              stroke-linecap="round" />
           </svg>
         </a>
       </header>
@@ -48,13 +42,11 @@
       <hr class="h-0.5 border-none bg-white mx-6 mt-2" />
 
       <div
-        class="p-4 sm:p-6 lg:p-8 text-white flex flex-col lg:flex-row gap-6 lg:gap-14 flex-1"
-      >
+        class="p-4 sm:p-6 lg:p-8 text-white flex flex-col lg:flex-row gap-6 lg:gap-14 flex-1">
         <!-- LEFT SIDE IMAGE AREA -->
         <div class="flex justify-center items-center">
           <div
-            class="js-ingredient-image h-64 sm:h-80 md:h-96 md:w-[320px] lg:w-[400px] 2xl:w-[480px] rounded-xl overflow-hidden flex justify-center items-center"
-          ></div>
+            class="js-ingredient-image h-64 sm:h-80 md:h-96 md:w-[320px] lg:w-[400px] 2xl:w-[480px] rounded-xl overflow-hidden flex justify-center items-center"></div>
         </div>
 
         <!-- RIGHT SIDE CONTENT -->
@@ -66,8 +58,7 @@
           </h2>
 
           <div
-            class="js-ingredient-related-info grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4 mt-1 gap-10 xl:gap-6 overflow-x-auto"
-          ></div>
+            class="js-ingredient-related-info grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4 mt-1 gap-10 xl:gap-6 overflow-x-auto"></div>
         </div>
       </div>
     </main>

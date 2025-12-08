@@ -4,200 +4,228 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script
       src="https://kit.fontawesome.com/887532cb5c.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YUMYUM</title>
+    <title>YumYum | Your digital cook book</title>
     <link rel="stylesheet" href="css/index.css" />
   </head>
 
   <body
-    class="bg-[#00C04B] text-white w-screen font-['Geist'] overflow-x-hidden min-h-screen"
-  >
-    <header class="text-black md:w-[98vw] px-2 mx-auto pt-2">
+    class="bg-[#00C04B] text-white w-screen font-['Geist'] overflow-x-hidden min-h-screen">
+
+    <header
+      class="text-black md:w-[98vw] px-2 pt-2 fixed z-99 left-1/2 -translate-x-1/2">
       <!-- ============== Navbar ============== -->
       <nav
-        class="p-2.5 bg-white flex justify-between items-center gap-4 rounded-4xl"
-      >
+        class="p-2.5 bg-white flex justify-between items-center gap-4 rounded-4xl">
         <!-- Hamburger Menu (Mobile Screen) -->
         <button
           id="hamburgerBtn"
-          class="lg:hidden text-black text-3xl focus:outline-none cursor-pointer ml-3"
-        >
+          class="lg:hidden text-black text-3xl focus:outline-none cursor-pointer ml-3">
           <i id="hamburgerIcon" class="fa-solid fa-bars"></i>
         </button>
 
         <!-- Left Menu -->
         <ul
           id="navMenu"
-          class="md:ml-3 hidden flex-col space-y-2 lg:space-y-0 font-semibold absolute top-16 rounded-t-2xl rounded-b-4xl left-2 right-2 md:left-2t md:right-4 bg-white lg:w-auto md:pl-6 p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none"
-        >
+          class="md:ml-3 hidden flex-col space-y-2 lg:space-y-0 font-semibold absolute top-16 rounded-t-2xl rounded-b-4xl left-2 right-2 md:left-2t md:right-4 bg-white lg:w-auto md:pl-6 p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none">
           <li
-            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2"
-          >
+            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2">
             <a href="index.html">Home</a>
           </li>
           <li
-            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2"
-          >
+            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2">
             <a href="cooking.html"> Cooking </a>
           </li>
           <li
-            class="flex lg:justify-center items-center gap-2 cursor-pointer active"
-          >
+            class="flex lg:justify-center items-center gap-2 cursor-pointer active">
             <a
               href="#"
-              class="flex items-center hover:text-gray-500 transition-all duration-300 ml-2"
-            >
+              class="flex items-center hover:text-gray-500 transition-all duration-300 ml-2">
               Ingredients
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5.5 8.25L11 13.75L16.5 8.25"
-                  stroke="white"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
             </a>
           </li>
           <li
-            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2"
-          >
+            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2">
             <a href="blog.html"> Blog </a>
           </li>
-        </ul>
+          <li
+            class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2">
+            <a href="about-us.html"> About Us </a>
+          </ul>
 
-        <!-- Logo -->
-        <p
-          class="font-['Paranoid_Starting'] text-xl sm:text-2xl pl-11 sm:p-0 sm:text-center cursor-pointer"
-        >
-          <a href="index.html"> YuMYuM </a>
-        </p>
+          <!-- Logo -->
+          <p
+            class="font-['Paranoid_Starting'] text-xl sm:text-2xl pl-11 sm:p-0 sm:text-center cursor-pointer">
+            <a href="index.html"> YuMYuM </a>
+          </p>
 
-        <!-- Search -->
-        <div class="flex ml-7 md:ml-0 md:justify-end md:w-[380px]">
-          <div
-            class="flex items-center border-2 border-white rounded-full px-2 sm:w-full w-[75%] bg-[#28282B]"
-          >
-            <i
-              class="fa-solid fa-magnifying-glass text-white cursor-pointer text-xl md:text-2xl ml-1 md:ml-2"
-            ></i>
-            <input
-              class="p-2.5 outline-none text-white text-[1rem] placeholder:text-[15px]"
-              type="text"
-              name="search-item"
-              id="search-item"
-              placeholder="Search any ingredient"
-              oninput="searchIngredient(event)"
-            />
+          <!-- Search -->
+          <div class="flex ml-7 md:ml-0 md:justify-end md:w-[380px]">
+            <div
+              class="flex items-center border-2 border-white rounded-full px-2 sm:w-full w-[75%] bg-[#28282B]">
+              <i
+                class="fa-solid fa-magnifying-glass text-white cursor-pointer text-xl md:text-2xl ml-1 md:ml-2"></i>
+              <input
+                class="p-2.5 outline-none text-white text-[1rem] placeholder:text-[15px]"
+                type="text"
+                name="search-item"
+                id="search-item"
+                placeholder="Search any ingredient"
+                oninput="searchIngredient(event)" />
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+      <header class="text-black md:w-[98vw] px-2 mx-auto pt-2 opacity-0">
+        <!-- ============== Navbar ============== -->
+        <nav
+          class="p-2.5 bg-white flex justify-between items-center gap-4 rounded-4xl">
+          <!-- Hamburger Menu (Mobile Screen) -->
+          <button
+            id="hamburgerBtn"
+            class="lg:hidden text-black text-3xl focus:outline-none cursor-pointer ml-3">
+            <i id="hamburgerIcon" class="fa-solid fa-bars"></i>
+          </button>
 
-    <main class="px-4 sm:px-8 md:px-16 mt-6">
-      <div class="flex flex-col lg:flex-row gap-6">
-        <!-- ============ Filter Section ============ -->
-        <section class="w-full lg:w-[25%]">
-          <form id="filterSelectionForm" action="#" method="post">
-            <h2 class="text-[20px] sm:text-[24px] font-bold">Filters</h2>
+          <!-- Left Menu -->
+          <ul
+            id="navMenu"
+            class="md:ml-3 hidden flex-col space-y-2 lg:space-y-0 font-semibold absolute top-16 rounded-t-2xl rounded-b-4xl left-2 right-2 md:left-2t md:right-4 bg-white lg:w-auto md:pl-6 p-6 text-left shadow-lg lg:static lg:flex lg:flex-row lg:p-0 lg:gap-10 lg:shadow-none">
+            <li
+              class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2">
+              <a href="index.html">Home</a>
+            </li>
+            <li
+              class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2">
+              <a href="cooking.html"> Cooking </a>
+            </li>
+            <li
+              class="flex lg:justify-center items-center gap-2 cursor-pointer active">
+              <a
+                href="#"
+                class="flex items-center hover:text-gray-500 transition-all duration-300 ml-2">
+                Ingredients
+              </a>
+            </li>
+            <li
+              class="cursor-pointer hover:text-gray-500 transition-all duration-300 ml-2">
+              <a href="blog.html"> Blog </a>
+            </li>
+          </ul>
 
-            <!-- =========== Filter Categories =========== -->
-            <div class="bg-[#0EB24E] w-full mt-4 sm:w-[75%] rounded-2xl">
-              <h3 class="text-[18px] sm:text-[20px] font-bold p-4">Sort By</h3>
+          <!-- Logo -->
+          <p
+            class="font-['Paranoid_Starting'] text-xl sm:text-2xl pl-11 sm:p-0 sm:text-center cursor-pointer">
+            <a href="index.html"> YuMYuM </a>
+          </p>
 
-              <!-- =========== Filter Items =========== -->
-              <div class="flex flex-col gap-3 pb-4 px-2 sm:px-4">
-                <label class="flex gap-5 items-center cursor-pointer">
-                  <input
-                    type="radio"
-                    name="sortOption"
-                    value="relevant"
-                    checked
-                    class="w-5 h-5 accent-black rounded-sm cursor-pointer"
-                  />
-                  <p
-                    class="font-semibold hover:text-gray-300 transition-all duration-300"
-                  >
-                    Relevant
-                  </p>
-                </label>
+          <!-- Search -->
+          <div class="flex ml-7 md:ml-0 md:justify-end md:w-[380px]">
+            <div
+              class="flex items-center border-2 border-white rounded-full px-2 sm:w-full w-[75%] bg-[#28282B]">
+              <i
+                class="fa-solid fa-magnifying-glass text-white cursor-pointer text-xl md:text-2xl ml-1 md:ml-2"></i>
+              <input
+                class="p-2.5 outline-none text-white text-[1rem] placeholder:text-[15px]"
+                type="text"
+                name="search-item"
+                id="search-item"
+                placeholder="Search any ingredient"
+                oninput="searchIngredient(event)" />
+            </div>
+          </div>
+        </nav>
+      </header>
 
-                <label class="flex gap-5 items-center">
-                  <input
-                    type="radio"
-                    name="sortOption"
-                    value="a-to-z"
-                    class="w-5 h-5 accent-black rounded-sm cursor-pointer"
-                  />
-                  <p
-                    class="font-semibold hover:text-gray-300 transition-all duration-300"
-                  >
-                    A to Z
-                  </p>
-                </label>
+      <main class="px-4 sm:px-8 md:px-16 mt-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+          <!-- ============ Filter Section ============ -->
+          <section class="w-full lg:w-[25%]">
+            <form id="filterSelectionForm" action="#" method="post">
+              <h2 class="text-[20px] sm:text-[24px] font-bold">Filters</h2>
 
-                <label class="flex gap-5 items-center">
-                  <input
-                    type="radio"
-                    name="sortOption"
-                    value="z-to-a"
-                    class="w-5 h-5 accent-black rounded-sm cursor-pointer"
-                  />
-                  <p
-                    class="font-semibold hover:text-gray-300 transition-all duration-300"
-                  >
-                    Z to A
-                  </p>
-                </label>
+              <!-- =========== Filter Categories =========== -->
+              <div class="bg-[#0EB24E] w-full mt-4 sm:w-[75%] rounded-2xl">
+                <h3 class="text-[18px] sm:text-[20px] font-bold p-4">Sort
+                  By</h3>
+
+                <!-- =========== Filter Items =========== -->
+                <div class="flex flex-col gap-3 pb-4 px-2 sm:px-4">
+                  <label class="flex gap-5 items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="sortOption"
+                      value="relevant"
+                      checked
+                      class="w-5 h-5 accent-black rounded-sm cursor-pointer" />
+                    <p
+                      class="font-semibold hover:text-gray-300 transition-all duration-300">
+                      Relevant
+                    </p>
+                  </label>
+
+                  <label class="flex gap-5 items-center">
+                    <input
+                      type="radio"
+                      name="sortOption"
+                      value="a-to-z"
+                      class="w-5 h-5 accent-black rounded-sm cursor-pointer" />
+                    <p
+                      class="font-semibold hover:text-gray-300 transition-all duration-300">
+                      A to Z
+                    </p>
+                  </label>
+
+                  <label class="flex gap-5 items-center">
+                    <input
+                      type="radio"
+                      name="sortOption"
+                      value="z-to-a"
+                      class="w-5 h-5 accent-black rounded-sm cursor-pointer" />
+                    <p
+                      class="font-semibold hover:text-gray-300 transition-all duration-300">
+                      Z to A
+                    </p>
+                  </label>
+                </div>
               </div>
+
+              <button
+                class="bg-white text-black text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-4 cursor-pointer hover:text-black hover:opacity-70 transition-all duration-300"
+                type="submit">
+                Apply Filters
+              </button>
+
+              <button
+                class="bg-black text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-2 cursor-pointer hover:bg-gray-300 hover:text-black transition-all duration-300"
+                type="submit">
+                Clear Filters
+              </button>
+            </form>
+          </section>
+
+          <!-- ========== Render Ingredient =========== -->
+          <section class="flex-1">
+            <h1 class="text-[28px] sm:text-[32px] font-bold my-4">
+              Discover More About Ingredient
+            </h1>
+
+            <!-- ============ Wrapper ============ -->
+            <div class="relative">
+              <!-- ============ Ingredient Cards ============ -->
+              <div
+                class="js-card-item grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-6 gap-16 mb-10"></div>
             </div>
 
-            <button
-              class="bg-white text-black text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-4 cursor-pointer hover:text-black hover:opacity-70 transition-all duration-300"
-              type="submit"
-            >
-              Apply Filters
-            </button>
+            <div id="pagination" class="flex gap-6 justify-center my-10"></div>
+          </section>
+        </div>
+      </main>
 
-            <button
-              class="bg-black text-white text-[16px] rounded-xl w-full sm:w-[75%] p-2 mt-2 cursor-pointer hover:bg-gray-300 hover:text-black transition-all duration-300"
-              type="submit"
-            >
-              Clear Filters
-            </button>
-          </form>
-        </section>
-
-        <!-- ========== Render Ingredient =========== -->
-        <section class="flex-1">
-          <h1 class="text-[28px] sm:text-[32px] font-bold my-4">
-            Discover More About Ingredient
-          </h1>
-
-          <!-- ============ Wrapper ============ -->
-          <div class="relative">
-            <!-- ============ Ingredient Cards ============ -->
-            <div
-              class="js-card-item grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-6 gap-16 mb-10"
-            ></div>
-          </div>
-
-          <div id="pagination" class="flex gap-6 justify-center my-10"></div>
-        </section>
-      </div>
-    </main>
-
-    <script type="module" src="scripts/ingredient-list-page.js"></script>
-    <script>
+      <script type="module" src="scripts/ingredient-list-page.js"></script>
+      <script>
       const hamburgerBtn = document.getElementById("hamburgerBtn");
       const hamburgerIcon = document.getElementById("hamburgerIcon");
       const navMenu = document.getElementById("navMenu");
@@ -214,5 +242,5 @@
         }
       });
     </script>
-  </body>
-</html>
+    </body>
+  </html>
