@@ -1,91 +1,132 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css\index.css">
+    <title>YumYum</title>
+    <link rel="stylesheet" href="css\index.css" />
+  </head>
 
-    </style>
-</head>
+  <body
+    class="bg-[#00C04B] text-white w-screen font-['Geist'] overflow-x-hidden overflow-y-scroll h-fit relative"
+  >
+    <header class="text-black w-[98vw] px-2 mx-auto pt-2" id="header">
+      <nav
+        class="px-7 py-4 grid grid-cols-3 grid-rows-1 relative bg-white rounded-4xl"
+      >
+        <ul class="flex col-start-1 gap-x-10 items-center" id="navUL">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li class="active">
+            <a href="cooking.html">Cooking</a>
+          </li>
+          <li class="flex items-center">
+            <a href="ingredient.html" class="flex items-center">
+              Ingredients
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.5 8.25L11 13.75L16.5 8.25"
+                  stroke="white"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </li>
 
-<body class="bg-[#00C04B] text-white w-screen font-['Geist'] overflow-x-hidden overflow-y-scroll  h-fit relative">
-        <header
-            class="text-black w-[98vw]  px-2 mx-auto pt-2 " id="header">
-            <nav class="px-7 py-4 grid grid-cols-3 grid-rows-1 relative bg-white rounded-4xl">
-                <ul class="flex col-start-1 gap-x-10 items-center" id="navUL">
-                    <li >
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li class="active">
-                        <a href="cooking.html">Cooking</a>
-                    </li>
-                    <li class="flex items-center">
-                        <a href="ingredient.html" class="flex items-center">
-                            Ingredients
-                            <svg width="22" height="22" viewBox="0 0 22 22"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.5 8.25L11 13.75L16.5 8.25"
-                                    stroke="white" stroke-width="4"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </li>
+          <li>
+            <a href="blog.html">Blog</a>
+          </li>
+        </ul>
 
-                    <li>
-                        <a href="blog.html">Blog</a>
-                    </li>
-                </ul>
-
-                <p
-                    class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl"><a href="index.html">YuMYuM</a></p>
-		<div id="container" class="absolute  rounded-3xl bg-black right-3 top-2.5 w-100 h-fit py-2 z-1">
-			<div class="flex w-full h-full peer mx-3">
-				<svg width="29" height="29" class="mr-4" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M25.375 25.375L20.1188 20.1188M22.9583 13.2917C22.9583 18.6304 18.6304 22.9583 13.2917 22.9583C7.95291 22.9583 3.625 18.6304 3.625 13.2917C3.625 7.95291 7.95291 3.625 13.2917 3.625C18.6304 3.625 22.9583 7.95291 22.9583 13.2917Z" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-				</svg>
-				<input type="text" autocomplete="off" class="text-white focus:outline-none" placeholder="Search any meal" id="search-input">
-			</div>
-			<div id="suggestionsContainer" class=" text-white hidden flex-col gap-2   overflow-y-scroll h-100 m-3">
-			</div>
-
-		</div>
-            </nav>
-        </header>
+        <p class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl">
+          <a href="index.html">YuMYuM</a>
+        </p>
+        <div
+          id="container"
+          class="absolute rounded-3xl bg-black right-3 top-2.5 w-100 h-fit py-2 z-1"
+        >
+          <div class="flex w-full h-full peer mx-3">
+            <svg
+              width="29"
+              height="29"
+              class="mr-4"
+              viewBox="0 0 29 29"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M25.375 25.375L20.1188 20.1188M22.9583 13.2917C22.9583 18.6304 18.6304 22.9583 13.2917 22.9583C7.95291 22.9583 3.625 18.6304 3.625 13.2917C3.625 7.95291 7.95291 3.625 13.2917 3.625C18.6304 3.625 22.9583 7.95291 22.9583 13.2917Z"
+                stroke="#ffffff"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <input
+              type="text"
+              autocomplete="off"
+              class="text-white focus:outline-none"
+              placeholder="Search any meal"
+              id="search-input"
+            />
+          </div>
+          <div
+            id="suggestionsContainer"
+            class="text-white hidden flex-col gap-2 overflow-y-scroll h-100 m-3"
+          ></div>
+        </div>
+      </nav>
+    </header>
     <main class="main">
-	    <p id="title" class="font-['aalto'] text-[150px] ml-10"></p>
-	    <div class=" mx-auto w-[90%] h-fit flex  px-10 flex-wrap justify-baseline items-start" id="ingredient_section">
-	    </div>
-	    <p class="font-['aalto'] text-[150px] ml-10">COOKING STEP</p>
-	    <div class=" w-full overflow-hidden relative mx-auto h-fit" id="slider">
-		    <div class="flex transition delay-150 duration-300 ease-in-out h-fit " id="track">
-
-		    </div>
-		    <button  class="absolute left-5 top-[50%] translate-y-[-50%] hover:scale-120 transition-all  cursor-pointer z-10 text-4xl focus:outline-none"   id="prevBtn">❮</button>
-		    <button class="absolute right-5 top-[50%] translate-y-[-50%] hover:scale-120 transition-all  cursor-pointer z-10 text-4xl focus:outline-none" id="nextBtn">❯</button>
-	    </div>
-	    <div class='w-full h-256'>
-	    <p class="font-['aalto'] text-[150px] ml-10">VIDEO</p>
-		<iframe 
-			id="ytframe"
-		  width="100%" 
-		  height="1000" 
-		  src="" 
-		  title="YouTube video player" 
-		  frameborder="0" 
-		  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-		  allowfullscreen>
-		</iframe>
-
-	    </div>
+      <p id="title" class="font-['aalto'] text-[150px] ml-10"></p>
+      <div
+        class="mx-auto w-[90%] h-fit flex px-10 flex-wrap justify-baseline items-start"
+        id="ingredient_section"
+      ></div>
+      <p class="font-['aalto'] text-[150px] ml-10">COOKING STEP</p>
+      <div class="w-full overflow-hidden relative mx-auto h-fit" id="slider">
+        <div
+          class="flex transition delay-150 duration-300 ease-in-out h-fit"
+          id="track"
+        ></div>
+        <button
+          class="absolute left-5 top-[50%] translate-y-[-50%] hover:scale-120 transition-all cursor-pointer z-10 text-4xl focus:outline-none"
+          id="prevBtn"
+        >
+          ❮
+        </button>
+        <button
+          class="absolute right-5 top-[50%] translate-y-[-50%] hover:scale-120 transition-all cursor-pointer z-10 text-4xl focus:outline-none"
+          id="nextBtn"
+        >
+          ❯
+        </button>
+      </div>
+      <div class="w-full h-256">
+        <p class="font-['aalto'] text-[150px] ml-10">VIDEO</p>
+        <iframe
+          id="ytframe"
+          width="100%"
+          height="1000"
+          src=""
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
     </main>
     <script src="scripts/detail-cooking.js"></script>
-
-	</body>
-
+  </body>
 </html>
