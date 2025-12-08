@@ -53,15 +53,53 @@
 
 
 }
+.um1{
+  animation: opacity 1.5s infinite 1.5s;
+  
+}
 
-@keyframes opacity{
+.um2{
+  animation: opacity 1s infinite 2s;
+  
+}
+.um3{
+  animation: opacity 2s infinite 1s;
+  
+}
+
+.um4{
+  animation: opacity 3s infinite 500ms;
+  
+}
+.nice{
+  animation: onlyOpacity 3s infinite;
+}
+.laught{
+  animation-duration: 200ms !important;
+  animation-timing-function: ease-out;
+  font-size: x-large;
+}
+
+@keyframes onlyOpacity{
   from{
     opacity: 0;
-    scale: 0.5;
+
+  }
+  to{
+    scale: 2;
+
+  }
+}
+@keyframes opacity{
+  from{
+    scale: 1;
+    opacity: 0;
+
   }
   to{
     opacity: 1;
-    scale:1
+    scale: 2;
+
   }
 }
 
@@ -111,16 +149,31 @@
   }
 }
 
-.about p{
+.position p{
 font-size: large;
 font-family: "Geist";
 font-weight: bold;
 
 }
 
-.about p:nth-child(1){
+.position p:nth-child(1){
 font-size: large;
 font-weight: 400;
 font-size: small;
 
+}
+
+.inputContact{
+  border: 0;
+  border-bottom: 1px;
+  border-color: white;
+  font-size: 25px;
+  border-style: solid;
+  width: 100%;
+}
+.inputContact:focus{
+  outline: 0;
+}
+.inputContact::placeholder{
+  color: white;
 }

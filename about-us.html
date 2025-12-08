@@ -14,7 +14,7 @@
     <body
         class="bg-[#00C04B] text-white w-screen font-['Geist'] overflow-x-hidden h-screen relative">
         <header
-            class="text-black w-[98vw]  px-2 mx-auto pt-2">
+            class="fixed text-black w-[98vw]  px-2 mx-auto pt-2 z-99">
             <nav
                 class="px-7 py-4 grid grid-cols-3 grid-rows-1 relative bg-white rounded-4xl">
                 <ul class="flex col-start-1 gap-x-10 items-center" id="navUL">
@@ -29,13 +29,7 @@
                     <li class="flex items-center">
                         <a href="ingredient.html" class="flex items-center">
                             Ingredients
-                            <svg width="22" height="22" viewBox="0 0 22 22"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.5 8.25L11 13.75L16.5 8.25"
-                                    stroke="white" stroke-width="4"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+
                         </a>
                     </li>
 
@@ -44,7 +38,7 @@
                     </li>
 
                     <li class="active">
-                        <a href="blog.html">About us</a>
+                        <a href="blog.html">About Us</a>
                     </li>
                 </ul>
 
@@ -52,62 +46,213 @@
                     class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl">YuMYuM</p>
             </header>
 
-            <div class="px-7">
+            <header
+                class="opacity-0 text-black w-[98vw]  px-2 mx-auto pt-2">
+                <nav
+                    class="px-7 py-4 grid grid-cols-3 grid-rows-1 relative bg-white rounded-4xl">
+                    <ul class="flex col-start-1 gap-x-10 items-center"
+                        id="navUL">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
 
-                <h1 class="font-[aalto] text-9xl p-2">Just a group who love
-                    cooking</h1>
-                <div class="w-full flex justify-evenly">
+                        <li>
+                            <a href="cooking.html">Cooking</a>
+                        </li>
 
-                    <div class="w-1/5 about">
+                        <li class="flex items-center">
+                            <a href="ingredient.html" class="flex items-center">
+                                Ingredients
 
-                        <div
-                            class="overflow-hidden rounded-4xl">
-                            <video class="w-full" muted loop autoplay>
-                                <source src="assets/video/white-bg-am.mp4"
-                                    type="video/mp4">
-                                your browser does not support the video tag.
-                            </video>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="blog.html">Blog</a>
+                        </li>
+
+                        <li class="active">
+                            <a href="blog.html">About Us</a>
+                        </li>
+                    </ul>
+
+                    <p
+                        class="col-start-2 text-center font-['Paranoid_Starting'] text-2xl">YuMYuM</p>
+                </header>
+
+                <div class="px-7">
+
+                    <h1 class="font-[aalto] text-9xl p-2">Just a group who love
+                        cooking</h1>
+                    <div class="w-full flex justify-evenly">
+
+                        <div class="w-1/6 about relative">
+
+                            <p
+                                class="text-black absolute top-0 left-0 rotate-12 text-white text-shadow-black/25 text-shadow-lg um2 delay-100">UMM</p>
+                            <p
+                                class="text-black absolute top-1/2 left-full -rotate-23 text-white text-shadow-black/25 text-shadow-lg um1 delay-0">UMM</p>
+                            <p
+                                class="text-black absolute bottom-30 left-0 rotate-30 text-shadow-black/25 text-shadow-lg um4 delay-40">UMM</p>
+
+                            <p
+                                class="text-black absolute top-5/12 -left-10 -rotate-40 text-white text-shadow-black/25 text-shadow-lg um4 delay-150">UMM</p>
+
+                            <p
+                                class="text-black absolute top-2/12 -right-10 text-white text-shadow-black/25 text-shadow-lg um4 delay-150">UMM</p>
+                            <div
+                                class="overflow-hidden rounded-4xl">
+                                <video class="w-full" muted loop autoplay>
+                                    <source src="assets/video/white-bg-am.mp4"
+                                        type="video/mp4">
+                                    your browser does not support the video tag.
+                                </video>
+
+                            </div>
+                            <br>
+                            <div class="position">
+
+                                <p>UX/UI designer & Developer</p>
+                                <p>Piseth Sok</p>
+                            </div>
                         </div>
-                        <div>
+                        <div class="w-1/6 about relative">
 
-                            <p>UX/UI designer/Developer</p>
-                            <p>Piseth Sok</p>
+                            <div
+                                class="overflow-hidden rounded-4xl">
+                                <video class="w-full" muted loop autoplay>
+                                    <source src="assets/video/nice.mp4"
+                                        type="video/mp4">
+                                    your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <p
+                                class="absolute top-2/12 -right-10 text-white text-shadow-black/25 text-shadow-lg delay-150 nice">Nice....!</p>
+                            <br>
+                            <div class="position">
+                                <p>Nang Vannet</p>
+                                <p>Developer</p>
+                            </div>
                         </div>
+
+                        <div class="w-1/6 about relative">
+
+                            <div
+                                class="overflow-hidden rounded-4xl">
+                                <video class="w-full" muted loop autoplay>
+                                    <source src="assets/video/muhahahacat.mp4"
+                                        type="video/mp4">
+                                    your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <br>
+
+                            <p
+                                class="absolute top-8/12 left-1/2 text-shadow-black/25 text-shadow-lg laught -translate-x-1/2 -translate-y-1/2 text-black animate-bounce">Muhahahaha</p>
+                            <div class="position">
+                                <p>Lot Tola</p>
+                                <p>Developer</p>
+                            </div>
+                        </div>
+
                     </div>
+                    <br>
+                    <p class="w-full text-center px-7">Lorem ipsum dolor sit
+                        amet
+                        consectetur
+                        adipisicing elit.
+                        Voluptatem consequuntur quam ut, nesciunt error tenetur
+                        facere consectetur voluptates pariatur. Doloribus
+                        consequuntur dicta fuga harum molestias, soluta
+                        doloremque
+                        repellat reiciendis eius. Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Quaerat, facere, neque
+                        excepturi dicta quis praesentium animi vitae modi
+                        ratione
+                        tenetur eaque laborum perspiciatis in ipsa provident
+                        numquam
+                        rerum tempore exercitationem.</p>
 
-                    <div class="w-1/5 about">
+                    <br>
+                    <br>
+                    <h1 class="font-[aalto] text-9xl p-2 w-1/2">We would like to
+                        hear from
+                        you</h1>
+                    <div class="flex flex-row gap-x-7">
+                        <div class="embed-map-fixed"><div
+                                class="embed-map-container"><iframe
+                                    class="embed-map-frame" frameborder="0"
+                                    scrolling="no" marginheight="0"
+                                    marginwidth="0"
+                                    src="https://maps.google.com/maps?width=600&height=400&hl=en&q=American%20University%20of%20Phnom%20Penh&t=&z=14&ie=UTF8&iwloc=B&output=embed"></iframe><a
+                                    href="https://imagable.ai"
+                                    style="font-size:2px!important;color:gray!important;position:absolute;bottom:0;left:0;z-index:1;max-height:1px;overflow:hidden">AI
+                                    Image
+                                    Generator</a></div><style>.embed-map-fixed{position:relative;text-align:right;width:600px;height:400px;}.embed-map-container{overflow:hidden;background:none!important;width:600px;height:400px;}.embed-map-frame{width:600px!important;height:400px!important;}</style></div>
 
-                        <div
-                            class="overflow-hidden rounded-4xl">
-                            <video class="w-full" muted loop autoplay>
-                                <source src="assets/video/nice.mp4"
-                                    type="video/mp4">
-                                your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <div>
-                            <p>Nang Vannet</p>
-                            <p>Developer</p>
-                        </div>
+                        <form class="flex flex-col grow px-3 justify-between"
+                            action="https://formspree.io/f/xnnjarjp"
+                            method="POST">
+                            <div class="flex gap-10 ">
+                                <label>
+                                    First Name
+
+                                    <input type="text" placeholder="John"
+                                        class="inputContact" required>
+                                </label>
+
+                                <label for>
+                                    Last Name
+
+                                    <input type="text" placeholder="Doe"
+                                        class="inputContact" required>
+                                </label>
+                            </div>
+                            <label for>
+                                Email
+
+                                <input type="email" placeholder="Doe@gmail.com"
+                                    name="email"
+                                    class="inputContact" required>
+
+                            </label>
+
+                            <label for="
+                        ">
+                                Message
+
+                                <textarea name="message" class="inputContact"
+                                    required></textarea>
+                            </label>
+
+                            <div>
+                                <button type="submit"
+                                    class="p-3 bg-white text-black rounded-full flex items-center gap-x-3 cursor-pointer">Send
+                                    Message
+                                    <div class="bg-black p-1 rounded-full">
+
+                                        <svg
+                                            class="group-hover:rotate-[45deg] transition duration-100"
+                                            width="28" height="28"
+                                            viewBox="0 0 48 48"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M14 34L34 14M34 14H14M34 14V34"
+                                                stroke="#ffff" stroke-width="4"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+
+                                </button>
+                            </div>
+                        </form>
+
                     </div>
+                    <br>
 
-                    <div class="w-1/5 about">
-
-                        <div
-                            class="overflow-hidden rounded-4xl">
-                            <video class="w-full" muted loop autoplay>
-                                <source src="assets/video/muhahahacat.mp4"
-                                    type="video/mp4">
-                                your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <div>
-                            <p>Lot Tola</p>
-                            <p>Developer</p>
-                        </div>
-                    </div>
-
-                </div>
-            </body>
-            <script src="scripts/blog.js"></script>
-            </html2
+                </body>
+                <script src="scripts/send-mail.js"></script>
+                </html2
