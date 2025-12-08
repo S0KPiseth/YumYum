@@ -1,8 +1,6 @@
 //loading logic
 const loadingImage = document.getElementById("loadingImage");
 const loadingContainer = document.getElementById("loadingContainer");
-console.log(loadingImage);
-console.log(loadingContainer);
 
 const playLoading = () => {
   let i = 1;
