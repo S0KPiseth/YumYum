@@ -1,9 +1,9 @@
+import { token } from "./config.js";
 const foodName = document.getElementById("food-name");
 const flag = document.getElementById("flag");
 const bgImg = document.getElementById("bg-img");
 const description = document.getElementById("description");
 const country_name = document.getElementById("country-name");
-const token = process.env.HUGGING_FACE_TOKEN
 const btn = document.getElementById("btn");
 
 //loading logic
