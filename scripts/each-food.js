@@ -1,3 +1,4 @@
+import { token } from "./config.js";
 const foodName = document.getElementById("food-name");
 const flag = document.getElementById("flag");
 const bgImg = document.getElementById("bg-img");
@@ -101,8 +102,6 @@ async function fetchData() {
 
   const foodNameStr = foodData["meals"][0]["strMeal"];
   foodName.textContent = foodNameStr;
-  const token = "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";
-
   let timerId = playLoading();
   try {
     loadingContainer.className =
@@ -130,7 +129,7 @@ async function fetchData() {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          model: "meta-llama/Llama-3.2-3B-Instruct",
+          model: "Qwen/Qwen2.5-Coder-32B-Instruct",
           messages: [
             {
               role: "user",
